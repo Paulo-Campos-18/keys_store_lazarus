@@ -1,0 +1,29 @@
+# ===== Lazarus / Free Pascal =====
+# Artefatos de compilacao (nao versionar)
+lib/
+backup/
+*.compiled
+*.o
+*.ppu
+*.or
+*.a
+*.res
+*.bak
+*.dbg
+*.exe
+*.dll
+
+# Estado da sessao da IDE (preferencias locais da maquina)
+*.lps
+
+# Executavel gerado (ajuste o nome se o do seu projeto for diferente)
+/src/keys-store
+/src/project1
+
+# ===== Sistema operacional =====
+.DS_Store
+Thumbs.db
+
+# ===== Editores =====
+.vscode/
+.idea/
