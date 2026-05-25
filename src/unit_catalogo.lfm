@@ -1,0 +1,128 @@
+object Form1: TForm1
+  Left = 258
+  Height = 762
+  Top = 113
+  Width = 1395
+  Caption = 'Form1'
+  ClientHeight = 762
+  ClientWidth = 1395
+  LCLVersion = '4.6.0.0'
+  object ScrollBoxCatalogo: TScrollBox
+    Left = 40
+    Height = 704
+    Top = 8
+    Width = 1288
+    HorzScrollBar.Page = 1229
+    VertScrollBar.Page = 349
+    ClientHeight = 700
+    ClientWidth = 1284
+    TabOrder = 0
+    object Image1: TImage
+      Left = 712
+      Height = 221
+      Top = 120
+      Width = 237
+    end
+    object Image3: TImage
+      Left = 416
+      Height = 221
+      Top = 128
+      Width = 237
+    end
+    object Image4: TImage
+      Left = 992
+      Height = 221
+      Top = 128
+      Width = 237
+    end
+    object Image5: TImage
+      Left = 86
+      Height = 221
+      Top = 126
+      Width = 237
+    end
+  end
+  object CnnCatalogo: TZConnection
+    ControlsCodePage = cCP_UTF8
+    Properties.Strings = (
+      'RawStringEncoding=DB_CP'
+    )
+    Connected = True
+    AfterConnect = CnnCatalogoAfterConnect
+    DisableSavepoints = False
+    HostName = 'localhost'
+    Port = 5432
+    Database = 'keys_bd'
+    User = 'postgres'
+    Password = 'abc'
+    Protocol = 'postgresql'
+    LibraryLocation = 'C:\Program Files\PostgreSQL\17\bin\libpq.dll'
+    Left = 192
+    Top = 16
+  end
+  object QueryCatalogo: TZQuery
+    Connection = CnnCatalogo
+    SQL.Strings = (
+      'select g.id,g.name,g.studio,g.price, img.image_byte'
+      'from games g,images img'
+      'where img.game_id = g.id and'
+      'img.is_cover = 1 and'
+      'g.deleted = 0;'
+    )
+    Params = <>
+    Left = 240
+    Top = 16
+    object QueryCatalogoid: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object QueryCatalogoname: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+    object QueryCatalogostudio: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'studio'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+    object QueryCatalogoprice: TZFMTBCDField
+      FieldKind = fkData
+      FieldName = 'price'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Precision = 0
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+      Size = 0
+    end
+    object QueryCatalogoimage_byte: TZBlobField
+      FieldKind = fkData
+      FieldName = 'image_byte'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+end
