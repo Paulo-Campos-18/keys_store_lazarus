@@ -1,0 +1,107 @@
+object Form2: TForm2
+  Left = 262
+  Height = 679
+  Top = 108
+  Width = 1459
+  Caption = 'Form2'
+  ClientHeight = 0
+  ClientWidth = 0
+  LCLVersion = '4.6.0.0'
+  object image_jogo: TImage
+    Left = 136
+    Height = 528
+    Top = 24
+    Width = 824
+  end
+  object nome: TLabel
+    Left = 144
+    Height = 15
+    Top = 568
+    Width = 31
+    Caption = 'nome'
+  end
+  object preco: TLabel
+    Left = 344
+    Height = 15
+    Top = 584
+    Width = 30
+    Caption = 'preco'
+  end
+  object descricao: TLabel
+    Left = 992
+    Height = 15
+    Top = 40
+    Width = 50
+    Caption = 'descricao'
+  end
+  object studio: TLabel
+    Left = 560
+    Height = 15
+    Top = 592
+    Width = 33
+    Caption = 'studio'
+  end
+  object release_date: TLabel
+    Left = 640
+    Height = 15
+    Top = 584
+    Width = 64
+    Caption = 'release_date'
+  end
+  object Label6: TLabel
+    Left = 736
+    Height = 15
+    Top = 632
+    Width = 34
+    Caption = 'Label6'
+  end
+  object Sair: TSpeedButton
+    Left = 8
+    Height = 22
+    Top = 8
+    Width = 56
+    Caption = '← Voltar'
+    OnClick = SairClick
+  end
+  object btn_lista_desejo: TSpeedButton
+    Left = 920
+    Height = 22
+    Top = 576
+    Width = 146
+    Caption = 'Adicionar a lista de desejo'
+  end
+  object btn_carrinho: TSpeedButton
+    Left = 1080
+    Height = 22
+    Top = 576
+    Width = 159
+    Caption = 'Adicionar ao carrinho'
+  end
+  object Query_jogo: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'select g.*, img.image_byte'
+      'from games g, images img'
+      'where img.game_id = g.id'
+      '  and img.is_cover = 1'
+      '  and g.deleted = 0'
+      '  and g.id = :id'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 49
+    Top = 72
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+  end
+end
