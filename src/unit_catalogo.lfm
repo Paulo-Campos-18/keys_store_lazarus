@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 239
-  Height = 539
-  Top = 226
-  Width = 1413
+  Left = 1912
+  Height = 1009
+  Top = -8
+  Width = 1920
   Caption = 'Form1'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 1009
+  ClientWidth = 1920
   LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   object ScrollBoxCatalogo: TScrollBox
@@ -19,12 +19,6 @@ object Form1: TForm1
     ParentBackground = False
     ParentColor = False
     TabOrder = 0
-  end
-  object Image1: TImage
-    Left = 360
-    Height = 90
-    Top = 8
-    Width = 90
   end
   object CnnCatalogo: TZConnection
     ControlsCodePage = cCP_UTF8

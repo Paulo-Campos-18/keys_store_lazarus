@@ -11,7 +11,6 @@ uses
 type
   { TForm1 }
   TForm1 = class(TForm)
-    Image1: TImage;
     ScrollBoxCatalogo: TScrollBox;
     CnnCatalogo: TZConnection;
     QueryCatalogo: TZQuery;

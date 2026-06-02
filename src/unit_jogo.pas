@@ -6,25 +6,36 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Buttons, ZDataset, DB;
+  Buttons, ZDataset, ZAbstractRODataset, DB;
 
 type
 
   { TForm2 }
 
   TForm2 = class(TForm)
-    image_jogo: TImage;
-    nome: TLabel;
-    preco: TLabel;
-    descricao: TLabel;
-    btn_lista_desejo: TSpeedButton;
     btn_carrinho: TSpeedButton;
-    studio: TLabel;
-    release_date: TLabel;
-    Label6: TLabel;
-    Sair: TSpeedButton;
+    btn_lista_desejo: TSpeedButton;
+    btn_mostrar_todos: TSpeedButton;
+    descricao: TLabel;
+    image_jogo: TImage;
+    Label_comentarios: TLabel;
+    nome: TLabel;
+    Panel_area_coments: TPanel;
+    preco: TLabel;
+    Query_comentarioscomment_text: TZRawCLobField;
+    Query_comentarioscreated_at: TZDateTimeField;
+    Query_comentariosnickname: TZRawStringField;
+    Query_comentariosuser_id: TZIntegerField;
     Query_jogo: TZQuery;
+    Query_genres: TZQuery;
+    Query_comentarios: TZQuery;
+    release_date: TLabel;
+    Sair: TSpeedButton;
+    box_descricao: TScrollBox;
+    studio: TLabel;
     procedure SairClick(Sender: TObject);
+    procedure btn_mostrar_todosClick(Sender: TObject);
+
   private
 
   public
@@ -33,6 +44,7 @@ type
 
 var
   Form2: TForm2;
+  IdJogoAtual: Integer;
 
 implementation
 
@@ -40,25 +52,49 @@ implementation
 
 procedure TForm2.SairClick(Sender: TObject);
 begin
+    while Panel_area_coments.ControlCount > 0 do
+    Panel_area_coments.Controls[0].Free;
   Close;
 end;
+
+procedure TForm2.btn_mostrar_todosClick(Sender: TObject);
+begin
+  Query_comentarios.Close;
+  Query_comentarios.ParamByName('game_id').AsInteger := IdJogoAtual;
+  Query_comentarios.ParamByName('limit').AsInteger := 9999;
+  Query_comentarios.Open;
+  CarregarJogo(IdJogoAtual);
+  btn_mostrar_todos.Visible := False;
+end;
+
 
 Procedure TForm2.CarregarJogo(IdJogo:Integer);
 var
   stream: TMemoryStream;
+  linha:integer;
+  box_comentario:TPanel;
+  user_comentario:TLabel;
+  data_comentario: TLabel;
+  conteudo_coment: TLabel;
+
 begin
+   IdJogoAtual := IdJogo;
+
    Query_jogo.Close;
    Query_jogo.ParamByName('id').AsInteger := IdJogo;
    Query_jogo.Open;
 
-   nome.Caption := Query_jogo.FieldByName('name').AsString;
-   studio.Caption := Query_jogo.FieldByName('studio').AsString;
-   preco.Caption := 'R$ ' + Query_jogo.FieldByName('price').AsString;
-   studio.Caption := Query_jogo.FieldByName('studio').AsString;
-   descricao.Caption := Query_jogo.FieldByName('description').AsString;
-   release_date.Caption := FormatDateTime('dd/mm/yyyy',
-   Query_jogo.FieldByName('release_date').AsDateTime);
+   Query_comentarios.Close;
+   Query_comentarios.ParamByName('game_id').AsInteger := IdJogo;
+   Query_comentarios.ParamByName('limit').AsInteger := 4;
+   Query_comentarios.Open;
 
+   nome.Caption := Query_jogo.FieldByName('name').AsString;
+   studio.Caption := 'Estudio: ' + Query_jogo.FieldByName('studio').AsString;
+   preco.Caption := 'R$ ' + Query_jogo.FieldByName('price').AsString;
+   descricao.Caption := Query_jogo.FieldByName('description').AsString;
+   release_date.Caption := 'Data de lançamento: ' + FormatDateTime('dd/mm/yyyy',
+   Query_jogo.FieldByName('release_date').AsDateTime);
 
    try
       stream := TMemoryStream.Create;
@@ -70,9 +106,74 @@ begin
       stream.Free;
     end;
 
+    //criando blocos para comentários
 
+    while Panel_area_coments.ControlCount > 0 do
+    Panel_area_coments.Controls[0].Free;
+
+    linha := 0;
+    while not Query_comentarios.EOF do
+     begin
+      box_comentario := TPanel.Create(self);
+      box_comentario.Parent := Panel_area_coments;
+      box_comentario.left := 10;
+      box_comentario.top := 15 + linha * (250 + 15);
+      box_comentario.Width := 450;
+      box_comentario.Height := 150;
+      box_comentario.color := RGBToColor($20, $20, $20);
+      box_comentario.BevelOuter := bvNone;
+      box_comentario.BevelInner := bvNone;
+
+
+    user_comentario := TLabel.Create(self);
+    user_comentario.Parent := box_comentario;
+    user_comentario.Caption := Query_comentarios.FieldByName('nickname').AsString;
+    user_comentario.Width := 250;
+    user_comentario.Height := 25;
+    user_comentario.top := 10;
+    user_comentario.left := 10;
+    user_comentario.Font.color := clWhite;
+    user_comentario.Font.Name := 'Segoe UI';
+    user_comentario.Font.Size := 15;
+    user_comentario.Font.Style := [fsBold];
+
+    data_comentario := TLabel.Create(self);
+    data_comentario.Parent := box_comentario;
+    data_comentario.Caption := FormatDateTime('dd/mm/yyyy',
+      Query_comentarios.FieldByName('created_at').AsDateTime);
+    data_comentario.Width := 110;
+    data_comentario.Height := 20;
+    data_comentario.top := 15;
+    data_comentario.left := 330;
+    data_comentario.Font.color := clSilver;
+    data_comentario.Font.Name := 'Segoe UI';
+    data_comentario.Font.Size := 10;
+
+
+    conteudo_coment := TLabel.Create(self);
+    conteudo_coment.Parent := box_comentario;
+    conteudo_coment.Caption := Query_comentarios.FieldByName('comment_text').AsString;
+    conteudo_coment.Width := 430;
+    conteudo_coment.Height := 190;
+    conteudo_coment.top := 45;
+    conteudo_coment.left := 10;
+    conteudo_coment.Font.Name := 'Segoe UI';
+    conteudo_coment.Font.Size := 10;
+    conteudo_coment.Font.Color := clWhite;
+    conteudo_coment.WordWrap := True;
+    conteudo_coment.AutoSize := False;
+
+      linha := linha + 1;
+      Query_comentarios.Next;
+     end;
+
+    Panel_area_coments.Height := 15 + linha * (150 + 15);
+
+    btn_mostrar_todos.Parent := Panel_area_coments.Parent;
+    btn_mostrar_todos.Left := Panel_area_coments.Left;
+    btn_mostrar_todos.Top := Panel_area_coments.Top + Panel_area_coments.Height + 10;
+    btn_mostrar_todos.Visible := Query_comentarios.RecordCount >= 4;
 
 end;
 
 end.
-
