@@ -1,23 +1,23 @@
 object Form2: TForm2
-  Left = 1921
+  Left = 1
   Height = 991
   Top = 1
   Width = 1902
   Caption = 'Form2'
-  ClientHeight = 991
-  ClientWidth = 1902
+  ClientHeight = 0
+  ClientWidth = 0
   Color = 1972762
   LCLVersion = '4.6.0.0'
   object box_descricao: TScrollBox
     Left = 0
-    Height = 991
+    Height = 0
     Top = 0
-    Width = 1902
-    HorzScrollBar.Page = 1674
-    VertScrollBar.Page = 962
+    Width = 0
+    HorzScrollBar.Page = 1
+    VertScrollBar.Page = 1
     Align = alClient
-    ClientHeight = 987
-    ClientWidth = 1898
+    ClientHeight = 0
+    ClientWidth = 0
     Font.CharSet = ANSI_CHARSET
     Font.Color = clWhite
     Font.Pitch = fpVariable
