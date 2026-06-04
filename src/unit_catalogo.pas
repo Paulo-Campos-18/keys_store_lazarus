@@ -11,6 +11,7 @@ uses
 type
   { TForm1 }
   TForm1 = class(TForm)
+    Image1: TImage;
     ScrollBoxCatalogo: TScrollBox;
     CnnCatalogo: TZConnection;
     QueryCatalogo: TZQuery;
@@ -20,23 +21,30 @@ type
     QueryCatalogoprice: TZFMTBCDField;
     QueryCatalogostudio: TZRawStringField;
     procedure FormCreate(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure CnnCatalogoAfterConnect(Sender: TObject);
   private
     procedure CardClick(Sender: TObject);
   public
+    procedure avatar_create(Sender: TObject);// funcção para criar avatar em todas as telas?
   end;
 
 var
   Form1: TForm1;
+  usuario_logado: boolean;
 
 implementation
 
-uses unit_jogo;
+uses unit_jogo,unit_login;
 
 {$R *.lfm}
 
 { TForm1 }
+//Variável global
+
+
+//Funções
 
 procedure TForm1.CardClick(Sender: TObject);
 var
@@ -45,6 +53,11 @@ begin
   IdJogoClicado := TControl(Sender).Tag;
   Form2.CarregarJogo(IdJogoClicado);
   Form2.Show;
+end;
+
+procedure TForm1.avatar_create(Sender: TObject);
+begin
+
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -133,6 +146,11 @@ begin
 
   end;
   QueryCatalogo.close;
+end;
+
+procedure TForm1.Image1Click(Sender: TObject);
+begin
+  Form3.show;
 end;
 
 procedure TForm1.Image2Click(Sender: TObject);
