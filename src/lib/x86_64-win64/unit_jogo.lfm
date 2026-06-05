@@ -1,0 +1,292 @@
+object Form2: TForm2
+  Left = 1912
+  Height = 1009
+  Top = -8
+  Width = 1920
+  Caption = 'Form2'
+  ClientHeight = 1009
+  ClientWidth = 1920
+  Color = 1972762
+  LCLVersion = '4.6.0.0'
+  object box_descricao: TScrollBox
+    Left = 0
+    Height = 1009
+    Top = 0
+    Width = 1920
+    HorzScrollBar.Page = 1674
+    VertScrollBar.Page = 962
+    Align = alClient
+    ClientHeight = 1005
+    ClientWidth = 1916
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 0
+    object image_jogo: TImage
+      Left = 240
+      Height = 600
+      Top = 72
+      Width = 944
+    end
+    object nome: TLabel
+      Left = 240
+      Height = 48
+      Top = 24
+      Width = 108
+      Caption = 'nome'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -40
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object preco: TLabel
+      Left = 240
+      Height = 48
+      Top = 696
+      Width = 108
+      Caption = 'preco'
+      Color = clBackground
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clLime
+      Font.Height = -48
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object descricao: TLabel
+      Left = 1216
+      Height = 520
+      Top = 72
+      Width = 458
+      AutoSize = False
+      Caption = 'descricao'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -20
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+      WordWrap = True
+    end
+    object studio: TLabel
+      Left = 1216
+      Height = 32
+      Top = 634
+      Width = 80
+      Caption = 'studio'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -35
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object release_date: TLabel
+      Left = 1216
+      Height = 32
+      Top = 600
+      Width = 170
+      Caption = 'release_date'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -35
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label_comentarios: TLabel
+      Left = 240
+      Height = 32
+      Top = 870
+      Width = 164
+      Caption = 'Comentários'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -35
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object btn_lista_desejo: TSpeedButton
+      Left = 240
+      Height = 22
+      Top = 770
+      Width = 146
+      Caption = 'Adicionar a lista de desejo'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object btn_carrinho: TSpeedButton
+      Left = 416
+      Height = 22
+      Top = 770
+      Width = 159
+      Caption = 'Adicionar ao carrinho'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object Sair: TSpeedButton
+      Left = 8
+      Height = 22
+      Top = 24
+      Width = 56
+      Caption = '← Voltar'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+      OnClick = SairClick
+    end
+    object Panel_area_coments: TPanel
+      Left = 240
+      Height = 50
+      Top = 912
+      Width = 480
+      Caption = 'Sem comentários'
+      ParentBackground = False
+      TabOrder = 0
+    end
+    object btn_mostrar_todos: TSpeedButton
+      Left = 782
+      Height = 22
+      Top = 864
+      Width = 170
+      Caption = 'Mostrar todos os comentários'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+      OnClick = btn_mostrar_todosClick
+    end
+  end
+  object Query_jogo: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'select g.*, img.image_byte'
+      'from games g, images img'
+      'where img.game_id = g.id'
+      '  and img.is_cover = 1'
+      '  and g.deleted = 0'
+      '  and g.id = :id'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 49
+    Top = 72
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+  end
+  object Query_genres: TZQuery
+    Params = <>
+    Left = 48
+    Top = 144
+  end
+  object Query_comentarios: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'select u.nickname,gc.user_id,gc.comment_text, gc.created_at'
+      'from game_comments gc, users u'
+      'where u.id = gc.user_id'
+      'and gc.game_id = :game_id'
+      'order by gc.created_at desc'
+      'limit :limit'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end    
+      item
+        Name = 'limit'
+      end>
+    Left = 48
+    Top = 208
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end    
+      item
+        Name = 'limit'
+      end>
+    object Query_comentariosnickname: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nickname'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 30
+    end
+    object Query_comentariosuser_id: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'user_id'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object Query_comentarioscomment_text: TZRawCLobField
+      FieldKind = fkData
+      FieldName = 'comment_text'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      BlobType = ftMemo
+      Transliterate = False
+    end
+    object Query_comentarioscreated_at: TZDateTimeField
+      FieldKind = fkData
+      FieldName = 'created_at'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+end

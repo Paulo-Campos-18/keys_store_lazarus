@@ -1,7 +1,7 @@
 object Form3: TForm3
-  Left = 348
+  Left = 2070
   Height = 750
-  Top = 120
+  Top = 111
   Width = 1200
   Caption = 'Form3'
   ClientHeight = 750
@@ -32188,86 +32188,150 @@ object Form3: TForm3
     ClientHeight = 480
     ClientWidth = 496
     TabOrder = 1
+    Visible = False
     object Label3: TLabel
-      Left = 80
-      Height = 15
-      Top = 192
-      Width = 34
-      Caption = 'Label3'
+      Left = 16
+      Height = 21
+      Top = 170
+      Width = 63
+      Caption = '1º nome:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
     end
-    object Edit1: TEdit
-      Left = 56
+    object campo_primeiro_nome: TEdit
+      Left = 128
       Height = 23
-      Top = 232
-      Width = 80
+      Top = 170
+      Width = 216
       TabOrder = 0
-      Text = 'Edit1'
+      OnChange = campo_primeiro_nomeChange
     end
-    object Edit2: TEdit
-      Left = 224
+    object campo_ultimo_nome: TEdit
+      Left = 128
       Height = 23
-      Top = 232
-      Width = 80
+      Top = 218
+      Width = 216
       TabOrder = 1
-      Text = 'Edit2'
     end
-    object Edit3: TEdit
-      Left = 352
+    object campo_apelido: TEdit
+      Left = 128
       Height = 23
-      Top = 240
-      Width = 80
+      Top = 302
+      Width = 216
       TabOrder = 2
-      Text = 'Edit3'
     end
-    object Edit4: TEdit
-      Left = 64
+    object campo_email_regis: TEdit
+      Left = 128
       Height = 23
-      Top = 336
-      Width = 80
+      Top = 352
+      Width = 216
       TabOrder = 3
-      Text = 'Edit4'
     end
-    object Edit5: TEdit
-      Left = 224
+    object campo_senha_regis: TEdit
+      Left = 128
       Height = 23
-      Top = 336
-      Width = 80
+      Top = 400
+      Width = 216
       TabOrder = 4
-      Text = 'Edit5'
     end
     object Label4: TLabel
-      Left = 360
-      Height = 15
-      Top = 216
-      Width = 34
-      Caption = 'Label4'
+      Left = 16
+      Height = 21
+      Top = 304
+      Width = 56
+      Caption = 'Apelido:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
     end
     object Label5: TLabel
-      Left = 240
-      Height = 15
-      Top = 208
-      Width = 34
-      Caption = 'Label5'
+      Left = 16
+      Height = 21
+      Top = 216
+      Width = 84
+      Caption = 'Sobrenome:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
     end
     object Label6: TLabel
-      Left = 80
-      Height = 15
-      Top = 296
-      Width = 34
-      Caption = 'Label6'
+      Left = 16
+      Height = 21
+      Top = 344
+      Width = 41
+      Caption = 'Email:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
     end
     object Label7: TLabel
-      Left = 248
-      Height = 15
-      Top = 312
-      Width = 34
-      Caption = 'Label7'
+      Left = 16
+      Height = 21
+      Top = 392
+      Width = 46
+      Caption = 'Senha:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+      OnClick = Label7Click
+    end
+    object Label8: TLabel
+      Left = 16
+      Height = 21
+      Top = 264
+      Width = 41
+      Caption = 'Idade:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+    end
+    object campo_idade: TEdit
+      Left = 128
+      Height = 23
+      Top = 264
+      Width = 216
+      TabOrder = 5
+    end
+    object btn_voltar_login: TSpeedButton
+      Left = 48
+      Height = 28
+      Top = 448
+      Width = 125
+      Caption = 'Cancelar'
+      OnClick = btn_voltar_loginClick
+    end
+    object btn_registrase: TSpeedButton
+      Left = 280
+      Height = 28
+      Top = 448
+      Width = 125
+      Caption = 'Registrar-se'
+      OnClick = btn_registraseClick
     end
   end
   object Image1: TImage
-    Left = 536
+    Left = 528
     Height = 136
-    Top = 152
+    Top = 144
     Width = 136
     Picture.Data = {
       0A544A706567496D616765B5060000FFD8FFE000104A46494600010100000100
@@ -32353,43 +32417,80 @@ object Form3: TForm3
       end>
   end
   object Query_registrar: TZQuery
+    Connection = Form1.CnnCatalogo
     SQL.Strings = (
-      'Insert into  users (first_name,last_name,nickname,email,password)'
-      'values (:primerio_nome,:ultimo_nome,:nickname,:email,:senha) '
+      'Insert into  users (first_name,last_name,nickname,email,password,age,amount,deleted)'
+      'values (:primeiro_nome,:ultimo_nome,:nickname,:email,:senha,:idade,0,0) '
     )
     Params = <    
       item
-        Name = 'primerio_nome'
+        DataType = ftString
+        Name = 'primeiro_nome'
+        ParamType = ptInput
+        SQLType = stString
       end    
       item
+        DataType = ftString
         Name = 'ultimo_nome'
+        ParamType = ptInput
+        SQLType = stString
       end    
       item
         Name = 'nickname'
       end    
       item
+        DataType = ftString
         Name = 'email'
+        ParamType = ptInput
+        SQLType = stString
       end    
       item
+        DataType = ftString
         Name = 'senha'
+        ParamType = ptInput
+        SQLType = stString
+      end    
+      item
+        DataType = ftInteger
+        Name = 'idade'
+        ParamType = ptInput
+        SQLType = stInteger
       end>
-    Left = 95
+    Left = 121
     Top = 199
     ParamData = <    
       item
-        Name = 'primerio_nome'
+        DataType = ftString
+        Name = 'primeiro_nome'
+        ParamType = ptInput
+        SQLType = stString
       end    
       item
+        DataType = ftString
         Name = 'ultimo_nome'
+        ParamType = ptInput
+        SQLType = stString
       end    
       item
         Name = 'nickname'
       end    
       item
+        DataType = ftString
         Name = 'email'
+        ParamType = ptInput
+        SQLType = stString
       end    
       item
+        DataType = ftString
         Name = 'senha'
+        ParamType = ptInput
+        SQLType = stString
+      end    
+      item
+        DataType = ftInteger
+        Name = 'idade'
+        ParamType = ptInput
+        SQLType = stInteger
       end>
   end
 end

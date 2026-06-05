@@ -1,6 +1,5 @@
 # ===== Lazarus / Free Pascal =====
 # Artefatos de compilacao (nao versionar)
-lib/
 backup/
 *.compiled
 *.o
@@ -12,6 +11,7 @@ backup/
 *.dbg
 *.exe
 *.dll
+# lib/ --> Mantida no repo (DLLs do PostgreSQL para portabilidade)
 
 # Estado da sessao da IDE (preferencias locais da maquina)
 *.lps
