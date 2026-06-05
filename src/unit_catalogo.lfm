@@ -90,7 +90,7 @@ object Form1: TForm1
     Properties.Strings = (
       'RawStringEncoding=DB_CP'
     )
-    Connected = True
+    Connected = False
     AfterConnect = CnnCatalogoAfterConnect
     DisableSavepoints = False
     HostName = 'localhost'

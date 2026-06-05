@@ -44,15 +44,21 @@ uses unit_jogo, unit_login;
 
 function TForm1.FindLibPQ: string;
 var
-  Paths: array[0..4] of string;
+  Paths: array[0..7] of string;
   i: integer;
 begin
   Result := '';
-  Paths[0] := ExtractFilePath(ParamStr(0)) + '..\lib\libpq.dll'; // pasta lib/ do projeto
-  Paths[1] := ExtractFilePath(ParamStr(0)) + 'libpq.dll';        // junto ao .exe
-  Paths[2] := 'C:\Program Files\PostgreSQL\17\bin\libpq.dll';
-  Paths[3] := 'C:\Program Files\PostgreSQL\16\bin\libpq.dll';
+  // Caminhos relativos ao executável
+  Paths[0] := ExtractFilePath(ParamStr(0)) + '..\lib\libpq.dll';      // pasta lib/ se executável estiver em src/
+  Paths[1] := ExtractFilePath(ParamStr(0)) + 'libpq.dll';             // junto ao executável
+  Paths[2] := ExtractFilePath(ParamStr(0)) + 'lib\libpq.dll';         // subpasta lib/ junto ao executável
+  Paths[3] := ExtractFilePath(ParamStr(0)) + '..\..\lib\libpq.dll';   // pasta lib/ se executável estiver em lib/x86_64-win64/
+  
+  // Caminhos padrão de instalação do PostgreSQL no Windows (do mais novo ao mais antigo)
   Paths[4] := 'C:\Program Files\PostgreSQL\18\bin\libpq.dll';
+  Paths[5] := 'C:\Program Files\PostgreSQL\17\bin\libpq.dll';
+  Paths[6] := 'C:\Program Files\PostgreSQL\16\bin\libpq.dll';
+  Paths[7] := 'C:\Program Files\PostgreSQL\15\bin\libpq.dll';
 
   for i := 0 to High(Paths) do
     if FileExists(Paths[i]) then
@@ -82,18 +88,14 @@ var
   image: TImage;
   labelNome, labelPreco: TLabel;
   stream: TMemoryStream;
-  LibPath: string;  // <- adicionado
+  LibPath: string;
 begin
   // ===== Busca automática da libpq.dll =====
   LibPath := FindLibPQ;
-  if LibPath = '' then
-  begin
-    ShowMessage('libpq.dll não encontrada!' + LineEnding +
-                'Instale o PostgreSQL ou verifique a pasta lib/');
-    Application.Terminate;
-    Exit;
-  end;
-  CnnCatalogo.LibraryLocation := LibPath;
+  if LibPath <> '' then
+    CnnCatalogo.LibraryLocation := LibPath;
+  // Se LibPath for vazio, deixamos o LibraryLocation em branco para que 
+  // o ZeosLib tente carregar a DLL a partir do PATH do Windows.
   // =========================================
 
   linha := 0;
