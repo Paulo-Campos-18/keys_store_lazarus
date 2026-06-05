@@ -4,8 +4,8 @@ object Form1: TForm1
   Top = 1
   Width = 1902
   Caption = 'Form1'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 991
+  ClientWidth = 1902
   LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   object ScrollBoxCatalogo: TScrollBox
