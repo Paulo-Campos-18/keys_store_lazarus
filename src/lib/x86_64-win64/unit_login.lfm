@@ -1,7 +1,7 @@
 object Form3: TForm3
-  Left = 2070
+  Left = 2182
   Height = 750
-  Top = 111
+  Top = 112
   Width = 1200
   Caption = 'Form3'
   ClientHeight = 750
@@ -31548,6 +31548,7 @@ object Form3: TForm3
     Height = 480
     Top = 136
     Width = 496
+    BevelOuter = bvNone
     ClientHeight = 480
     ClientWidth = 496
     TabOrder = 0
@@ -32185,6 +32186,7 @@ object Form3: TForm3
     Height = 480
     Top = 136
     Width = 496
+    BevelOuter = bvNone
     ClientHeight = 480
     ClientWidth = 496
     TabOrder = 1

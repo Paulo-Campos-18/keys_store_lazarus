@@ -119,7 +119,7 @@ begin
     Exit;
   end;
 
-  // 3. Código de registro original (se tudo estiver preenchido)
+  try
    Query_registrar.Close;
    Query_registrar.ParamByName('primeiro_nome').AsString := campo_primeiro_nome.Text;
    Query_registrar.ParamByName('ultimo_nome').AsString := campo_ultimo_nome.Text;
@@ -132,10 +132,13 @@ begin
    ShowMessage('Usuário registrado com sucesso!');
    Panel_login.visible := true;
    Panel_registrar.visible := false;
+   except
+    on E: Exception do
+      ShowMessage('Erro: ' + E.Message);
+    end;
+   end;
 
-   //Tratar erros de UNIQUE constraint
 
-end;
 
 procedure TForm3.btn_voltar_loginClick(Sender: TObject);
 begin

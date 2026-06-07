@@ -11,6 +11,8 @@ type
   { TForm1 }
   TForm1 = class(TForm)
     Image1: TImage;
+    Image2: TImage;
+    PanelTopo: TPanel;
     ScrollBoxCatalogo: TScrollBox;
     CnnCatalogo: TZConnection;
     QueryCatalogo: TZQuery;
@@ -19,13 +21,15 @@ type
     QueryCatalogoname: TZRawStringField;
     QueryCatalogoprice: TZFMTBCDField;
     QueryCatalogostudio: TZRawStringField;
+    btn_carrinho: TSpeedButton;
+    btn_Lista_desejos: TSpeedButton;
+    btn_inventario: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure CnnCatalogoAfterConnect(Sender: TObject);
   private
     procedure CardClick(Sender: TObject);
-    function FindLibPQ: string;  // <- adicionado
   public
     procedure avatar_create(Sender: TObject);
   end;
@@ -42,25 +46,6 @@ uses unit_jogo, unit_login;
 
 { TForm1 }
 
-function TForm1.FindLibPQ: string;
-var
-  Paths: array[0..4] of string;
-  i: integer;
-begin
-  Result := '';
-  Paths[0] := ExtractFilePath(ParamStr(0)) + '..\lib\libpq.dll'; // pasta lib/ do projeto
-  Paths[1] := ExtractFilePath(ParamStr(0)) + 'libpq.dll';        // junto ao .exe
-  Paths[2] := 'C:\Program Files\PostgreSQL\17\bin\libpq.dll';
-  Paths[3] := 'C:\Program Files\PostgreSQL\16\bin\libpq.dll';
-  Paths[4] := 'C:\Program Files\PostgreSQL\18\bin\libpq.dll';
-
-  for i := 0 to High(Paths) do
-    if FileExists(Paths[i]) then
-    begin
-      Result := Paths[i];
-      Exit;
-    end;
-end;
 
 procedure TForm1.CardClick(Sender: TObject);
 var
@@ -82,20 +67,7 @@ var
   image: TImage;
   labelNome, labelPreco: TLabel;
   stream: TMemoryStream;
-  LibPath: string;  // <- adicionado
 begin
-  // ===== Busca automática da libpq.dll =====
-  LibPath := FindLibPQ;
-  if LibPath = '' then
-  begin
-    ShowMessage('libpq.dll não encontrada!' + LineEnding +
-                'Instale o PostgreSQL ou verifique a pasta lib/');
-    Application.Terminate;
-    Exit;
-  end;
-  CnnCatalogo.LibraryLocation := LibPath;
-  // =========================================
-
   linha := 0;
   coluna := 0;
   QueryCatalogo.Open;
@@ -108,8 +80,8 @@ begin
     end;
     box := TPanel.Create(self);
     box.Parent := ScrollBoxCatalogo;
-    box.left := (1 + coluna) * 25 + (coluna * 400);
-    box.top := (1 + linha) * 80 + (linha * 350);
+    box.left := 80 + ((1 + coluna) * 25 + (coluna * 400));
+    box.top := 15 + ((1 + linha) * 80 + (linha * 350));
     box.Width := 400;
     box.Height := 350;
     box.color := RGBToColor($20, $20, $20);
@@ -117,6 +89,7 @@ begin
     box.BevelInner := bvNone;
     box.Tag := QueryCatalogo.FieldByName('id').AsInteger;
     box.OnClick := @CardClick;
+
     image := TImage.Create(self);
     image.Parent := box;
     image.top := 0;
@@ -127,6 +100,7 @@ begin
     image.Tag := QueryCatalogo.FieldByName('id').AsInteger;
     image.OnClick := @CardClick;
     image.Cursor := crHandPoint;
+
     try
       stream := TMemoryStream.Create;
       TBlobField(QueryCatalogo.FieldByName('image_byte')).SaveToStream(stream);
@@ -135,6 +109,7 @@ begin
     finally
       stream.Free;
     end;
+
     labelNome := TLabel.Create(self);
     labelNome.Parent := box;
     labelNome.Caption := QueryCatalogo.FieldByName('name').AsString;
@@ -146,6 +121,7 @@ begin
     labelNome.Font.Name := 'Segoe UI';
     labelNome.Font.Size := 15;
     labelNome.Font.Style := [fsBold];
+
     labelPreco := TLabel.Create(self);
     labelPreco.Parent := box;
     labelPreco.Caption := 'R$ ' + QueryCatalogo.FieldByName('price').AsString;
@@ -154,7 +130,7 @@ begin
     labelPreco.top := 305;
     labelPreco.left := 20;
     labelPreco.Font.Name := 'Segoe UI';
-    labelPreco.Font.Size := 10;
+    labelPreco.Font.Size := 18;
     labelPreco.Font.Color := RGBToColor($6F, $C3, $50);
     coluna := coluna + 1;
     QueryCatalogo.Next;
