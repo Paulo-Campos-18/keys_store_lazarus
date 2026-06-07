@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, DB, Forms, Controls, Graphics, Dialogs, StdCtrls, DBCtrls,
-  Buttons, DBGrids, ZDataset, ZAbstractRODataset;
+  Buttons, DBGrids, ExtCtrls, ZDataset, ZAbstractRODataset;
 
 type
 
@@ -16,6 +16,9 @@ type
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     GroupBox1: TGroupBox;
+    Label_valor_total: TLabel;
+    Label_nome: TLabel;
+    Panel1: TPanel;
     Query_carrinhogame_id: TZIntegerField;
     Query_remover: TZQuery;
     Query_carrinhoname: TZRawStringField;
@@ -23,15 +26,15 @@ type
     Query_carrinhoprice: TZFMTBCDField;
     Query_carrinhoprice1: TZFMTBCDField;
     Sair: TSpeedButton;
-    SpeedButton1: TSpeedButton;
+    btn_remover: TSpeedButton;
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     Query_carrinho: TZQuery;
     Query_valor_total: TZQuery;
     procedure SairClick(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
+    procedure btn_removerClick(Sender: TObject);
   private
-
+    procedure atualizar_valor_total;
   public
     procedure abrir_carrinho;
   end;
@@ -51,7 +54,16 @@ begin
 end;
 
 
-procedure TForm4.SpeedButton1Click(Sender: TObject);
+procedure TForm4.atualizar_valor_total;
+begin
+   Query_valor_total.close;
+   Query_valor_total.ParamByName('user_id').AsInteger := usuario_id;
+   Query_valor_total.open;
+   Label_valor_total.Caption := 'R$ ' + Query_valor_total.FieldByName('total_price').AsString;
+
+end;
+
+procedure TForm4.btn_removerClick(Sender: TObject);
 begin
   if Query_carrinho.IsEmpty then
   begin
@@ -69,6 +81,7 @@ begin
       Query_carrinho.Close;
       Query_carrinho.ParamByName('user_id').AsInteger := usuario_id;
       Query_carrinho.Open;
+      Form4.atualizar_valor_total;
     except
       on E: Exception do
         ShowMessage('Erro ao remover item, contate o suporte!');
@@ -88,6 +101,7 @@ end;
      Query_carrinho.Close;
      Query_carrinho.ParamByName('user_id').AsInteger := usuario_id;
      Query_carrinho.Open;
+     Form4.atualizar_valor_total;
      Show;
    except
      on E: Exception do
