@@ -140,7 +140,7 @@ object Form2: TForm2
     object btn_carrinho: TSpeedButton
       Left = 416
       Height = 22
-      Top = 770
+      Top = 768
       Width = 159
       Caption = 'Adicionar ao carrinho'
       Font.CharSet = ANSI_CHARSET
@@ -148,6 +148,7 @@ object Form2: TForm2
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
+      OnClick = btn_carrinhoClick
     end
     object Sair: TSpeedButton
       Left = 8
@@ -288,5 +289,41 @@ object Form2: TForm2
       ReadOnly = False
       Required = False
     end
+  end
+  object Query_adicionar_carrinho: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'insert into cart (user_id,game_id)'
+      'values'
+      '(:user_id,:game_id)'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 56
+    Top = 273
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
   end
 end

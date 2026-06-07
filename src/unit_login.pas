@@ -58,6 +58,8 @@ type
 
 var
   Form3: TForm3;
+  usuario_logado: boolean;
+  usuario_id: Integer;
 
 implementation
 
@@ -90,6 +92,7 @@ end;
 
 procedure TForm3.btn_loginClick(Sender: TObject);
 begin
+  try
   Query_usuario.Close;
    Query_usuario.ParamByName('email').AsString := campo_email.Caption;
    Query_usuario.ParamByName('senha').AsString := campo_senha.Caption;
@@ -98,11 +101,19 @@ begin
    if not Query_usuario.IsEmpty then
     begin
       ShowMessage('Login realizado');
+      usuario_logado := true;
+      usuario_id := Query_usuario.FieldByName('id').AsInteger;
+      close;
     end
     else
     begin
      ShowMessage('Usuário ou senha incorretos');
     end;
+
+  except
+   on E: Exception do
+      ShowMessage('Erro: ' + E.Message);
+  end;
 
 end;
 

@@ -1,18 +1,18 @@
 object Form1: TForm1
-  Left = 1912
-  Height = 1009
-  Top = -8
-  Width = 1920
+  Left = 1921
+  Height = 991
+  Top = 1
+  Width = 1902
   Caption = 'Form1'
-  ClientHeight = 1009
-  ClientWidth = 1920
+  ClientHeight = 991
+  ClientWidth = 1902
   LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   object ScrollBoxCatalogo: TScrollBox
     Left = 0
-    Height = 953
+    Height = 935
     Top = 56
-    Width = 1920
+    Width = 1902
     HorzScrollBar.Page = 1
     VertScrollBar.Page = 1
     Align = alClient
@@ -26,17 +26,17 @@ object Form1: TForm1
     Left = 0
     Height = 56
     Top = 0
-    Width = 1920
+    Width = 1902
     Align = alTop
     BevelOuter = bvNone
     ClientHeight = 56
-    ClientWidth = 1920
+    ClientWidth = 1902
     Color = 3355443
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
     object Image1: TImage
-      Left = 1846
+      Left = 1828
       Height = 56
       Top = 0
       Width = 56
@@ -107,6 +107,7 @@ object Form1: TForm1
       Top = 23
       Width = 135
       Caption = 'Carrinho'
+      OnClick = btn_carrinhoClick
     end
     object btn_Lista_desejos: TSpeedButton
       Left = 1488

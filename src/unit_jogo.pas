@@ -33,6 +33,8 @@ type
     Sair: TSpeedButton;
     box_descricao: TScrollBox;
     studio: TLabel;
+    Query_adicionar_carrinho: TZQuery;
+    procedure btn_carrinhoClick(Sender: TObject);
     procedure SairClick(Sender: TObject);
     procedure btn_mostrar_todosClick(Sender: TObject);
 
@@ -47,7 +49,7 @@ var
   IdJogoAtual: Integer;
 
 implementation
-
+uses unit_login;
 {$R *.lfm}
 
 procedure TForm2.SairClick(Sender: TObject);
@@ -55,6 +57,33 @@ begin
     while Panel_area_coments.ControlCount > 0 do
     Panel_area_coments.Controls[0].Free;
   Close;
+end;
+
+procedure TForm2.btn_carrinhoClick(Sender: TObject);
+begin
+  if not usuario_logado then
+   begin
+     ShowMessage('É preciso ter feito login para adicionar ao carrinho!');
+   end
+   else
+   begin
+
+  try
+   Query_adicionar_carrinho.close;
+   Query_adicionar_carrinho.ParamByName('game_id').AsInteger := IdJogoAtual;
+   Query_adicionar_carrinho.ParamByName('user_id').AsInteger := usuario_id;
+   Query_adicionar_carrinho.execSQL;
+   ShowMessage('Jogo adicionado ao carrinho!');
+  except
+     on E: Exception do
+     begin
+      if (Pos('duplicate', E.message) > 0) then
+        ShowMessage('Você já tem esse jogo no carrinho!')
+      else
+        ShowMessage('Erro ao adicionar no carrinho, tente mais tarde!');
+    end;
+  end;
+  end;
 end;
 
 procedure TForm2.btn_mostrar_todosClick(Sender: TObject);
