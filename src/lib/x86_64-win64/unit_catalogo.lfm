@@ -1,18 +1,19 @@
 object Form1: TForm1
-  Left = 1921
-  Height = 991
-  Top = 1
-  Width = 1902
+  Left = -7
+  Height = 1055
+  Top = 0
+  Width = 1924
   Caption = 'Form1'
-  ClientHeight = 991
-  ClientWidth = 1902
+  ClientHeight = 0
+  ClientWidth = 0
+  DesignTimePPI = 120
   LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   object ScrollBoxCatalogo: TScrollBox
     Left = 0
-    Height = 935
-    Top = 56
-    Width = 1902
+    Height = 0
+    Top = 0
+    Width = 0
     HorzScrollBar.Page = 1
     VertScrollBar.Page = 1
     Align = alClient
@@ -23,23 +24,22 @@ object Form1: TForm1
     TabOrder = 0
   end
   object PanelTopo: TPanel
-    Left = 0
-    Height = 56
+    Left = -568
+    Height = 88
     Top = 0
-    Width = 1902
-    Align = alTop
+    Width = 2368
     BevelOuter = bvNone
-    ClientHeight = 56
-    ClientWidth = 1902
+    ClientHeight = 88
+    ClientWidth = 2368
     Color = 3355443
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
     object Image1: TImage
-      Left = 1828
-      Height = 56
+      Left = 2276
+      Height = 70
       Top = 0
-      Width = 56
+      Width = 70
       Anchors = [akTop, akRight]
       Picture.Data = {
         0A544A706567496D616765B5060000FFD8FFE000104A46494600010100000100
@@ -102,32 +102,32 @@ object Form1: TForm1
       OnClick = Image1Click
     end
     object btn_carrinho: TSpeedButton
-      Left = 1664
-      Height = 33
-      Top = 23
-      Width = 135
+      Left = 2080
+      Height = 41
+      Top = 29
+      Width = 169
       Caption = 'Carrinho'
       OnClick = btn_carrinhoClick
     end
     object btn_Lista_desejos: TSpeedButton
-      Left = 1488
-      Height = 33
-      Top = 22
-      Width = 135
+      Left = 1860
+      Height = 41
+      Top = 28
+      Width = 169
       Caption = 'Lista de desejos'
     end
     object btn_inventario: TSpeedButton
-      Left = 1312
-      Height = 33
-      Top = 22
-      Width = 135
+      Left = 1640
+      Height = 41
+      Top = 28
+      Width = 169
       Caption = 'Inventário'
     end
     object Image2: TImage
-      Left = 1664
-      Height = 33
-      Top = 22
-      Width = 35
+      Left = 2080
+      Height = 41
+      Top = 28
+      Width = 44
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963351C000089504E47
         0D0A1A0A0000000D4948445200000200000002000803000000C3A624C8000000
@@ -365,18 +365,17 @@ object Form1: TForm1
     Properties.Strings = (
       'RawStringEncoding=DB_CP'
     )
-    Connected = True
     AfterConnect = CnnCatalogoAfterConnect
     DisableSavepoints = False
     HostName = 'localhost'
-    Port = 5432
+    Port = 5433
     Database = 'keys_bd'
     User = 'postgres'
     Password = 'abc'
     Protocol = 'postgresql'
     LibraryLocation = 'C:\Program Files\PostgreSQL\17\bin\libpq.dll'
-    Left = 192
-    Top = 16
+    Left = 240
+    Top = 20
   end
   object QueryCatalogo: TZQuery
     Connection = CnnCatalogo
@@ -388,8 +387,8 @@ object Form1: TForm1
       'g.deleted = 0;'
     )
     Params = <>
-    Left = 240
-    Top = 16
+    Left = 300
+    Top = 20
     object QueryCatalogoid: TZIntegerField
       FieldKind = fkData
       FieldName = 'id'

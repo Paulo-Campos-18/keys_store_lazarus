@@ -18,6 +18,7 @@ type
     btn_mostrar_todos: TSpeedButton;
     descricao: TLabel;
     image_jogo: TImage;
+    titulo_descricao: TLabel;
     Label_comentarios: TLabel;
     nome: TLabel;
     Panel_area_coments: TPanel;
@@ -32,9 +33,12 @@ type
     release_date: TLabel;
     Sair: TSpeedButton;
     box_descricao: TScrollBox;
-    studio: TLabel;
+    box_textodescricao: TScrollBox;
     Query_adicionar_carrinho: TZQuery;
+    box_comentarios: TScrollBox;
+    studio: TLabel;
     procedure btn_carrinhoClick(Sender: TObject);
+    procedure descricaoClick(Sender: TObject);
     procedure SairClick(Sender: TObject);
     procedure btn_mostrar_todosClick(Sender: TObject);
 
@@ -84,6 +88,11 @@ begin
     end;
   end;
   end;
+end;
+
+procedure TForm2.descricaoClick(Sender: TObject);
+begin
+
 end;
 
 procedure TForm2.btn_mostrar_todosClick(Sender: TObject);
