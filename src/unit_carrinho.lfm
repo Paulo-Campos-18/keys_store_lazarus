@@ -1,27 +1,28 @@
 object Form4: TForm4
-  Left = 2022
-  Height = 562
-  Top = 154
-  Width = 1233
+  Left = 296
+  Height = 702
+  Top = 136
+  Width = 1488
   Caption = 'Form4'
-  ClientHeight = 562
-  ClientWidth = 1233
+  ClientHeight = 0
+  ClientWidth = 0
   Color = 3355443
+  DesignTimePPI = 120
   LCLVersion = '4.6.0.0'
   object GroupBox1: TGroupBox
-    Left = 184
-    Height = 417
-    Top = 16
-    Width = 664
-    ClientHeight = 397
-    ClientWidth = 660
+    Left = 230
+    Height = 500
+    Top = 20
+    Width = 746
+    ClientHeight = 475
+    ClientWidth = 742
     ParentBackground = False
     TabOrder = 0
     object DBGrid1: TDBGrid
       Left = 0
-      Height = 397
+      Height = 475
       Top = 0
-      Width = 660
+      Width = 742
       Align = alClient
       Color = clWindow
       Columns = <      
@@ -35,7 +36,7 @@ object Form4: TForm4
         end>
       DataSource = DataSource1
       Font.CharSet = ANSI_CHARSET
-      Font.Height = -24
+      Font.Height = -30
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
@@ -43,30 +44,30 @@ object Form4: TForm4
     end
   end
   object btn_remover: TSpeedButton
-    Left = 192
-    Height = 22
-    Top = 456
-    Width = 112
+    Left = 240
+    Height = 28
+    Top = 570
+    Width = 140
     Caption = 'Remover'
     OnClick = btn_removerClick
   end
   object SpeedButton2: TSpeedButton
-    Left = 456
-    Height = 22
-    Top = 456
-    Width = 112
+    Left = 560
+    Height = 28
+    Top = 570
+    Width = 140
   end
   object SpeedButton3: TSpeedButton
-    Left = 672
-    Height = 22
-    Top = 456
-    Width = 112
+    Left = 840
+    Height = 28
+    Top = 570
+    Width = 140
   end
   object Sair: TSpeedButton
-    Left = 8
-    Height = 22
-    Top = 24
-    Width = 56
+    Left = 64
+    Height = 28
+    Top = 32
+    Width = 70
     Caption = '← Voltar'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
@@ -76,36 +77,36 @@ object Form4: TForm4
     OnClick = SairClick
   end
   object Panel1: TPanel
-    Left = 856
-    Height = 72
-    Top = 48
+    Left = 1070
+    Height = 90
+    Top = 60
     Width = 274
-    ClientHeight = 72
+    ClientHeight = 90
     ClientWidth = 274
     ParentBackground = False
     TabOrder = 1
     object Label_nome: TLabel
-      Left = 8
-      Height = 21
-      Top = 16
-      Width = 103
+      Left = 10
+      Height = 28
+      Top = 20
+      Width = 132
       Caption = 'Total estimado:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -16
+      Font.Height = -20
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Label_valor_total: TLabel
-      Left = 128
-      Height = 21
-      Top = 16
-      Width = 64
+      Left = 160
+      Height = 28
+      Top = 20
+      Width = 80
       Caption = 'aaaaaaaa'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clLime
-      Font.Height = -16
+      Font.Height = -20
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
@@ -113,7 +114,6 @@ object Form4: TForm4
   end
   object Query_carrinho: TZQuery
     Connection = Form1.CnnCatalogo
-    Active = True
     SQL.Strings = (
       'select g.name, g.price, c.game_id'
       'from games g, cart c'
@@ -127,8 +127,8 @@ object Form4: TForm4
         ParamType = ptInput
         SQLType = stInteger
       end>
-    Left = 56
-    Top = 224
+    Left = 70
+    Top = 280
     ParamData = <    
       item
         DataType = ftInteger
@@ -182,8 +182,8 @@ object Form4: TForm4
       item
         Name = 'user_id'
       end>
-    Left = 56
-    Top = 285
+    Left = 70
+    Top = 356
     ParamData = <    
       item
         Name = 'user_id'
@@ -191,8 +191,8 @@ object Form4: TForm4
   end
   object DataSource1: TDataSource
     DataSet = Query_carrinho
-    Left = 64
-    Top = 456
+    Left = 80
+    Top = 570
   end
   object Query_remover: TZQuery
     Connection = Form1.CnnCatalogo
@@ -211,8 +211,8 @@ object Form4: TForm4
       item
         Name = 'game_id'
       end>
-    Left = 56
-    Top = 352
+    Left = 70
+    Top = 440
     ParamData = <    
       item
         DataType = ftInteger
