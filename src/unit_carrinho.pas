@@ -13,37 +13,45 @@ type
   { TForm4 }
 
   TForm4 = class(TForm)
+    btn_remover1: TSpeedButton;
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     GroupBox1: TGroupBox;
+    qtd_jogo_carrinho: TLabel;
     Label_valor_total: TLabel;
     Label_nome: TLabel;
+    nome1: TLabel;
     Panel1: TPanel;
+    query_att_qtd: TZQuery;
     Query_carrinhogame_id: TZIntegerField;
     Query_remover: TZQuery;
     Query_carrinhoname: TZRawStringField;
     Query_carrinhoname1: TZRawStringField;
     Query_carrinhoprice: TZFMTBCDField;
     Query_carrinhoprice1: TZFMTBCDField;
-    Sair: TSpeedButton;
     btn_remover: TSpeedButton;
+    Sair: TSpeedButton;
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     Query_carrinho: TZQuery;
     Query_valor_total: TZQuery;
+    ZQuery1: TZQuery;
+    procedure FormCreate(Sender: TObject);
     procedure SairClick(Sender: TObject);
     procedure btn_removerClick(Sender: TObject);
   private
     procedure atualizar_valor_total;
+    procedure atualizar_qtd_jogos;
   public
     procedure abrir_carrinho;
   end;
+
 
 var
   Form4: TForm4;
 
 implementation
- uses unit_catalogo,unit_jogo, unit_login;
+ uses unit_catalogo,unit_jogo, unit_login, unit_wishlist;
 {$R *.lfm}
 
 { TForm4 }
@@ -51,6 +59,11 @@ implementation
 procedure TForm4.SairClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure TForm4.FormCreate(Sender: TObject);
+begin
+
 end;
 
 
@@ -61,6 +74,13 @@ begin
    Query_valor_total.open;
    Label_valor_total.Caption := 'R$ ' + Query_valor_total.FieldByName('total_price').AsString;
 
+end;
+procedure TForm4.atualizar_qtd_jogos;
+begin
+  query_att_qtd.Close;
+  query_att_qtd.ParamByName('user_id').AsInteger := usuario_id;
+  query_att_qtd.Open;
+  qtd_jogo_carrinho.Caption := 'Total de jogos no carrinho: ' + Query_att_qtd.FieldByName('total').AsString;
 end;
 
 procedure TForm4.btn_removerClick(Sender: TObject);
@@ -82,6 +102,7 @@ begin
       Query_carrinho.ParamByName('user_id').AsInteger := usuario_id;
       Query_carrinho.Open;
       Form4.atualizar_valor_total;
+      Form4.atualizar_qtd_jogos
     except
       on E: Exception do
         ShowMessage('Erro ao remover item, contate o suporte!');
@@ -102,12 +123,11 @@ end;
      Query_carrinho.ParamByName('user_id').AsInteger := usuario_id;
      Query_carrinho.Open;
      Form4.atualizar_valor_total;
+     Form4.atualizar_qtd_jogos;
      Show;
    except
      on E: Exception do
        ShowMessage('Erro: ' + E.Message);
    end;
  end;
-
 end.
-

@@ -1,0 +1,410 @@
+object Form5: TForm5
+  Left = 279
+  Height = 744
+  Top = 14
+  Width = 1485
+  Caption = 'Form5'
+  ClientHeight = 0
+  ClientWidth = 0
+  Color = 3355443
+  DesignTimePPI = 120
+  LCLVersion = '4.6.0.0'
+  object titulo_wishlist: TLabel
+    Left = 168
+    Height = 60
+    Top = 136
+    Width = 393
+    Caption = 'Lista de Desejos'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -50
+    Font.Name = 'System'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object qtd_jogo_lista: TLabel
+    Left = 1559
+    Height = 32
+    Top = 168
+    Width = 184
+    Alignment = taRightJustify
+    Caption = 'qtd_jogo_lista'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -25
+    Font.Name = 'System'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object buscar_lista: TEdit
+    Left = 168
+    Height = 39
+    Top = 216
+    Width = 1575
+    AutoSize = False
+    AutoSelect = False
+    TabOrder = 0
+    Text = 'Buscar'
+  end
+  object GroupBox1: TScrollBox
+    Left = 168
+    Height = 160
+    Top = 264
+    Width = 1575
+    HorzScrollBar.Page = 1
+    HorzScrollBar.Visible = False
+    VertScrollBar.Page = 152
+    ClientHeight = 156
+    ClientWidth = 1571
+    ParentBackground = False
+    TabOrder = 1
+    object panel_wishlist: TPanel
+      Left = 0
+      Height = 152
+      Top = 0
+      Width = 1576
+      Caption = 'panel_wishlist'
+      ClientHeight = 152
+      ClientWidth = 1576
+      ParentBackground = False
+      TabOrder = 0
+      object nome: TLabel
+        Left = 248
+        Height = 60
+        Top = 8
+        Width = 132
+        AutoSize = False
+        Caption = 'nome'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -33
+        Font.Name = 'System'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object release_date: TLabel
+        Left = 248
+        Height = 20
+        Top = 120
+        Width = 105
+        Caption = 'release_date'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -17
+        Font.Name = 'System'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object data_adicionar: TLabel
+        Left = 248
+        Height = 20
+        Top = 96
+        Width = 119
+        Caption = 'data_adicionar'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -17
+        Font.Name = 'System'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object preco: TLabel
+        Left = 1376
+        Height = 48
+        Top = 24
+        Width = 184
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'preco'
+        Color = clBackground
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clLime
+        Font.Height = -30
+        Font.Name = 'System'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object btn_carrinho: TSpeedButton
+        Left = 1379
+        Height = 48
+        Top = 92
+        Width = 181
+        Caption = 'Adicionar ao carrinho'
+        OnClick = btn_carrinhoClick
+      end
+      object btn_remover: TSpeedButton
+        Left = 1160
+        Height = 48
+        Top = 92
+        Width = 181
+        Caption = 'Remover da lista'
+      end
+      object image_jogo: TImage
+        Left = 32
+        Height = 121
+        Top = 16
+        Width = 200
+      end
+    end
+  end
+  object Sair: TSpeedButton
+    Left = 56
+    Height = 40
+    Top = 64
+    Width = 96
+    Caption = '← Voltar'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object query_wishlist: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'select g.name, g.price, c.game_id'
+      'from games g, cart c'
+      'where g.id = c.game_id'
+      'and c.user_id = :user_id'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 904
+    Top = 56
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    object query_wishlistname: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+    object query_wishlistprice: TZFMTBCDField
+      FieldKind = fkData
+      FieldName = 'price'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Precision = 0
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+      Size = 0
+    end
+    object query_wishlistgame_id: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'game_id'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+  end
+  object query_jogo: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'select g.*, img.image_byte'
+      'from games g, images img'
+      'where img.game_id = g.id'
+      '  and img.is_cover = 1'
+      '  and g.deleted = 0'
+      '  and g.id = :id'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 792
+    Top = 56
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    object query_jogoid: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'id'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object query_jogoname: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'name'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+    object query_jogostudio: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'studio'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+    object query_jogodescription: TZRawCLobField
+      FieldKind = fkData
+      FieldName = 'description'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      BlobType = ftMemo
+      Transliterate = False
+    end
+    object query_jogorelease_date: TZDateTimeField
+      FieldKind = fkData
+      FieldName = 'release_date'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object query_jogoprice: TZFMTBCDField
+      FieldKind = fkData
+      FieldName = 'price'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Precision = 0
+      Currency = False
+      MaxValue = '0'
+      MinValue = '0'
+      Size = 0
+    end
+    object query_jogodeleted: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'deleted'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object query_jogoimage_byte: TZBlobField
+      FieldKind = fkData
+      FieldName = 'image_byte'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object Query_adicionar_carrinho: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'insert into cart (user_id,game_id)'
+      'values'
+      '(:user_id,:game_id)'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 640
+    Top = 56
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+  end
+  object query_att_qtd: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'select count(game_id) as total '
+      'from wishlist'
+      'where user_id = :user_id;'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 472
+    Top = 56
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    object query_att_qtdtotal: TZInt64Field
+      FieldKind = fkData
+      FieldName = 'total'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+    end
+  end
+end

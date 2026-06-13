@@ -10,9 +10,9 @@ object Form3: TForm3
   LCLVersion = '4.6.0.0'
   object Image2: TImage
     Left = 0
-    Height = 938
+    Height = 0
     Top = 0
-    Width = 1500
+    Width = 0
     Align = alClient
     Picture.Data = {
       1754506F727461626C654E6574776F726B4772617068696385640F0089504E47
