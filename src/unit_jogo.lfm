@@ -1,8 +1,8 @@
 object Form2: TForm2
-  Left = 410
-  Height = 627
-  Top = 432
-  Width = 1532
+  Left = 404
+  Height = 981
+  Top = 0
+  Width = 1479
   Caption = 'Form2'
   ClientHeight = 0
   ClientWidth = 0
@@ -29,7 +29,7 @@ object Form2: TForm2
     object image_jogo: TImage
       Left = 200
       Height = 752
-      Top = 112
+      Top = 120
       Width = 1016
     end
     object nome: TLabel
@@ -49,9 +49,9 @@ object Form2: TForm2
     end
     object preco: TLabel
       Left = 200
-      Height = 64
+      Height = 80
       Top = 872
-      Width = 144
+      Width = 184
       Caption = 'preco'
       Color = clBackground
       Font.CharSet = ANSI_CHARSET
@@ -75,6 +75,7 @@ object Form2: TForm2
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
+      OnClick = btn_lista_desejoClick
     end
     object btn_carrinho: TSpeedButton
       Left = 856
@@ -166,45 +167,31 @@ object Form2: TForm2
     end
     object box_comentarios: TScrollBox
       Left = 200
-      Height = 184
-      Top = 1000
+      Height = 160
+      Top = 1050
       Width = 1016
       HorzScrollBar.Page = 1
       HorzScrollBar.Visible = False
-      VertScrollBar.Page = 172
+      VertScrollBar.Page = 160
       BorderStyle = bsNone
-      ClientHeight = 184
+      ClientHeight = 160
       ClientWidth = 1016
       ParentBackground = False
       TabOrder = 1
-      object Label_comentarios: TLabel
-        Left = 0
-        Height = 48
-        Top = -8
-        Width = 246
-        Caption = 'Comentários'
-        Font.CharSet = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -44
-        Font.Name = 'System'
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
       object Panel_area_coments: TPanel
         Left = 0
-        Height = 72
-        Top = 40
-        Width = 1008
+        Height = 128
+        Top = 32
+        Width = 1016
+        Alignment = taLeftJustify
         Caption = 'Sem comentários'
         ParentBackground = False
         TabOrder = 0
       end
-      object btn_mostrar_todos: TSpeedButton
-        Left = 792
+      object btn_mostrar_todos1: TSpeedButton
+        Left = 804
         Height = 28
-        Top = 144
+        Top = 0
         Width = 212
         Caption = 'Mostrar todos os comentários'
         Font.CharSet = ANSI_CHARSET
@@ -230,6 +217,34 @@ object Form2: TForm2
       Font.Style = [fsBold]
       ParentFont = False
     end
+    object Label_comentarios: TLabel
+      Left = 200
+      Height = 48
+      Top = 1000
+      Width = 246
+      Caption = 'Comentários'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -44
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+  object btn_mostrar_todos: TSpeedButton
+    Left = 808
+    Height = 28
+    Top = 152
+    Width = 212
+    Caption = 'Mostrar todos os comentários'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+    OnClick = btn_mostrar_todosClick
   end
   object Query_jogo: TZQuery
     Connection = Form1.CnnCatalogo
@@ -357,6 +372,42 @@ object Form2: TForm2
       end>
     Left = 88
     Top = 464
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+  end
+  object Query_adicionar_wishlist: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'insert into wishlist (user_id,game_id)'
+      'values'
+      '(:user_id,:game_id)'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 88
+    Top = 568
     ParamData = <    
       item
         DataType = ftInteger

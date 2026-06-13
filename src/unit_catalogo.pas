@@ -25,6 +25,7 @@ type
     btn_Lista_desejos: TSpeedButton;
     btn_inventario: TSpeedButton;
     procedure btn_carrinhoClick(Sender: TObject);
+    procedure btn_Lista_desejosClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -40,7 +41,7 @@ var
 
 implementation
 
-uses unit_jogo, unit_login,unit_carrinho;
+uses unit_jogo, unit_login,unit_carrinho, unit_wishlist;
 
 {$R *.lfm}
 
@@ -141,6 +142,11 @@ end;
 procedure TForm1.btn_carrinhoClick(Sender: TObject);
 begin
   Form4.abrir_carrinho;
+end;
+
+procedure TForm1.btn_Lista_desejosClick(Sender: TObject);
+begin
+  Form5.abrir_wishlist;
 end;
 
 procedure TForm1.Image1Click(Sender: TObject);

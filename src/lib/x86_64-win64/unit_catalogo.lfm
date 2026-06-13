@@ -115,6 +115,7 @@ object Form1: TForm1
       Top = 28
       Width = 169
       Caption = 'Lista de desejos'
+      OnClick = btn_Lista_desejosClick
     end
     object btn_inventario: TSpeedButton
       Left = 1640
@@ -365,6 +366,7 @@ object Form1: TForm1
     Properties.Strings = (
       'RawStringEncoding=DB_CP'
     )
+    Connected = True
     AfterConnect = CnnCatalogoAfterConnect
     DisableSavepoints = False
     HostName = 'localhost'
@@ -387,7 +389,7 @@ object Form1: TForm1
       'g.deleted = 0;'
     )
     Params = <>
-    Left = 300
+    Left = 344
     Top = 20
     object QueryCatalogoid: TZIntegerField
       FieldKind = fkData

@@ -16,10 +16,12 @@ type
     btn_carrinho: TSpeedButton;
     btn_lista_desejo: TSpeedButton;
     btn_mostrar_todos: TSpeedButton;
+    btn_mostrar_todos1: TSpeedButton;
     descricao: TLabel;
     image_jogo: TImage;
-    titulo_descricao: TLabel;
     Label_comentarios: TLabel;
+    Query_adicionar_wishlist: TZQuery;
+    titulo_descricao: TLabel;
     nome: TLabel;
     Panel_area_coments: TPanel;
     preco: TLabel;
@@ -38,6 +40,7 @@ type
     box_comentarios: TScrollBox;
     studio: TLabel;
     procedure btn_carrinhoClick(Sender: TObject);
+    procedure btn_lista_desejoClick(Sender: TObject);
     procedure descricaoClick(Sender: TObject);
     procedure SairClick(Sender: TObject);
     procedure btn_mostrar_todosClick(Sender: TObject);
@@ -85,6 +88,33 @@ begin
         ShowMessage('Você já tem esse jogo no carrinho!')
       else
         ShowMessage('Erro ao adicionar no carrinho, tente mais tarde!');
+    end;
+  end;
+  end;
+end;
+
+procedure TForm2.btn_lista_desejoClick(Sender: TObject);
+begin
+  if not usuario_logado then
+   begin
+     ShowMessage('É preciso ter feito login para adicionar a lista de desejos!');
+   end
+   else
+   begin
+
+  try
+   Query_adicionar_wishlist.close;
+   Query_adicionar_wishlist.ParamByName('game_id').AsInteger := IdJogoAtual;
+   Query_adicionar_wishlist.ParamByName('user_id').AsInteger := usuario_id;
+   Query_adicionar_wishlist.execSQL;
+   ShowMessage('Jogo adicionado à lista de desejos!');
+  except
+     on E: Exception do
+     begin
+      if (Pos('duplicate', E.message) > 0) then
+        ShowMessage('Você já tem esse jogo na lista de desejos!')
+      else
+        ShowMessage('Erro ao adicionar na lista de desejos, tente mais tarde!');
     end;
   end;
   end;

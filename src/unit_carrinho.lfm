@@ -1,37 +1,38 @@
 object Form4: TForm4
-  Left = 296
-  Height = 702
-  Top = 136
-  Width = 1488
+  Left = 318
+  Height = 801
+  Top = 26
+  Width = 1550
   Caption = 'Form4'
   ClientHeight = 0
   ClientWidth = 0
   Color = 3355443
   DesignTimePPI = 120
   LCLVersion = '4.6.0.0'
+  OnCreate = FormCreate
   object GroupBox1: TGroupBox
-    Left = 230
-    Height = 500
-    Top = 20
-    Width = 746
-    ClientHeight = 475
-    ClientWidth = 742
+    Left = 352
+    Height = 628
+    Top = 168
+    Width = 946
+    ClientHeight = 603
+    ClientWidth = 942
     ParentBackground = False
     TabOrder = 0
     object DBGrid1: TDBGrid
       Left = 0
-      Height = 475
+      Height = 603
       Top = 0
-      Width = 742
+      Width = 942
       Align = alClient
       Color = clWindow
       Columns = <      
         item
-          Title.Caption = 'name'
+          Title.Caption = 'Nome do Jogo'
           FieldName = 'name'
         end      
         item
-          Title.Caption = 'price'
+          Title.Caption = 'Preço'
           FieldName = 'price'
         end>
       DataSource = DataSource1
@@ -44,30 +45,70 @@ object Form4: TForm4
     end
   end
   object btn_remover: TSpeedButton
-    Left = 240
-    Height = 28
-    Top = 570
-    Width = 140
-    Caption = 'Remover'
+    Left = 1136
+    Height = 44
+    Top = 816
+    Width = 156
+    Caption = 'Remover jogo'
     OnClick = btn_removerClick
   end
   object SpeedButton2: TSpeedButton
-    Left = 560
-    Height = 28
-    Top = 570
-    Width = 140
+    Left = 1352
+    Height = 44
+    Top = 296
+    Width = 136
   end
   object SpeedButton3: TSpeedButton
-    Left = 840
-    Height = 28
-    Top = 570
-    Width = 140
+    Left = 1512
+    Height = 44
+    Top = 296
+    Width = 136
+  end
+  object Panel1: TPanel
+    Left = 1352
+    Height = 90
+    Top = 184
+    Width = 296
+    ClientHeight = 90
+    ClientWidth = 296
+    ParentBackground = False
+    TabOrder = 1
+    object Label_nome: TLabel
+      Left = 10
+      Height = 32
+      Top = 11
+      Width = 200
+      Caption = 'Total estimado:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -25
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label_valor_total: TLabel
+      Left = 10
+      Height = 32
+      Top = 40
+      Width = 128
+      Caption = 'aaaaaaaa'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clLime
+      Font.Height = -25
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
   end
   object Sair: TSpeedButton
-    Left = 64
-    Height = 28
-    Top = 32
-    Width = 70
+    Left = 208
+    Height = 40
+    Top = 40
+    Width = 96
     Caption = '← Voltar'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
@@ -76,41 +117,43 @@ object Form4: TForm4
     ParentFont = False
     OnClick = SairClick
   end
-  object Panel1: TPanel
-    Left = 1070
-    Height = 90
-    Top = 60
-    Width = 274
-    ClientHeight = 90
-    ClientWidth = 274
-    ParentBackground = False
-    TabOrder = 1
-    object Label_nome: TLabel
-      Left = 10
-      Height = 28
-      Top = 20
-      Width = 132
-      Caption = 'Total estimado:'
-      Font.CharSet = ANSI_CHARSET
-      Font.Color = clWhite
-      Font.Height = -20
-      Font.Pitch = fpVariable
-      Font.Quality = fqDraft
-      ParentFont = False
-    end
-    object Label_valor_total: TLabel
-      Left = 160
-      Height = 28
-      Top = 20
-      Width = 80
-      Caption = 'aaaaaaaa'
-      Font.CharSet = ANSI_CHARSET
-      Font.Color = clLime
-      Font.Height = -20
-      Font.Pitch = fpVariable
-      Font.Quality = fqDraft
-      ParentFont = False
-    end
+  object nome1: TLabel
+    Left = 352
+    Height = 60
+    Top = 88
+    Width = 210
+    Caption = 'Carrinho'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -50
+    Font.Name = 'System'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object btn_remover1: TSpeedButton
+    Left = 936
+    Height = 44
+    Top = 816
+    Width = 156
+    Caption = 'Abrir descrição'
+    OnClick = btn_removerClick
+  end
+  object qtd_jogo_carrinho: TLabel
+    Left = 352
+    Height = 32
+    Top = 816
+    Width = 200
+    Caption = 'Total estimado:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -25
+    Font.Name = 'System'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object Query_carrinho: TZQuery
     Connection = Form1.CnnCatalogo
@@ -127,8 +170,8 @@ object Form4: TForm4
         ParamType = ptInput
         SQLType = stInteger
       end>
-    Left = 70
-    Top = 280
+    Left = 80
+    Top = 208
     ParamData = <    
       item
         DataType = ftInteger
@@ -182,8 +225,8 @@ object Form4: TForm4
       item
         Name = 'user_id'
       end>
-    Left = 70
-    Top = 356
+    Left = 80
+    Top = 312
     ParamData = <    
       item
         Name = 'user_id'
@@ -192,7 +235,7 @@ object Form4: TForm4
   object DataSource1: TDataSource
     DataSet = Query_carrinho
     Left = 80
-    Top = 570
+    Top = 512
   end
   object Query_remover: TZQuery
     Connection = Form1.CnnCatalogo
@@ -211,8 +254,8 @@ object Form4: TForm4
       item
         Name = 'game_id'
       end>
-    Left = 70
-    Top = 440
+    Left = 80
+    Top = 408
     ParamData = <    
       item
         DataType = ftInteger
@@ -247,5 +290,29 @@ object Form4: TForm4
       MinValue = '0'
       Size = 0
     end
+  end
+  object query_att_qtd: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'select count(game_id) as total '
+      'from cart'
+      'where user_id = :user_id;'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 80
+    Top = 136
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
   end
 end
