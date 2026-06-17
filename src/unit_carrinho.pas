@@ -13,7 +13,6 @@ type
   { TForm4 }
 
   TForm4 = class(TForm)
-    btn_remover1: TSpeedButton;
     DataSource1: TDataSource;
     DBGrid1: TDBGrid;
     GroupBox1: TGroupBox;
@@ -31,14 +30,18 @@ type
     Query_carrinhoprice1: TZFMTBCDField;
     btn_remover: TSpeedButton;
     Sair: TSpeedButton;
+    SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     Query_carrinho: TZQuery;
     Query_valor_total: TZQuery;
+    btn_detalhes: TSpeedButton;
     ZQuery1: TZQuery;
+    procedure btn_detalhesClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SairClick(Sender: TObject);
     procedure btn_removerClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     procedure atualizar_valor_total;
     procedure atualizar_qtd_jogos;
@@ -51,7 +54,7 @@ var
   Form4: TForm4;
 
 implementation
- uses unit_catalogo,unit_jogo, unit_login, unit_wishlist;
+ uses unit_catalogo,unit_jogo, unit_login, unit_wishlist,unit_pagamento;
 {$R *.lfm}
 
 { TForm4 }
@@ -66,6 +69,12 @@ begin
 
 end;
 
+procedure TForm4.btn_detalhesClick(Sender: TObject);
+begin
+  Form2.CarregarJogo(Query_carrinho.FieldByName('game_id').AsInteger);
+  Form2.Show;
+end;
+
 
 procedure TForm4.atualizar_valor_total;
 begin
@@ -73,6 +82,7 @@ begin
    Query_valor_total.ParamByName('user_id').AsInteger := usuario_id;
    Query_valor_total.open;
    Label_valor_total.Caption := 'R$ ' + Query_valor_total.FieldByName('total_price').AsString;
+   Label_valor_total.Tag :=Query_valor_total.FieldByName('total_price').AsInteger;
 
 end;
 procedure TForm4.atualizar_qtd_jogos;
@@ -108,6 +118,11 @@ begin
         ShowMessage('Erro ao remover item, contate o suporte!');
     end;
   end;
+end;
+
+procedure TForm4.SpeedButton1Click(Sender: TObject);
+begin
+  Form6.abrir_pagamento;
 end;
 
  procedure TForm4.abrir_carrinho;

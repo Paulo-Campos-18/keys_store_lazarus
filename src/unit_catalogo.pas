@@ -25,6 +25,7 @@ type
     btn_Lista_desejos: TSpeedButton;
     btn_inventario: TSpeedButton;
     procedure btn_carrinhoClick(Sender: TObject);
+    procedure btn_inventarioClick(Sender: TObject);
     procedure btn_Lista_desejosClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
@@ -69,6 +70,11 @@ var
   labelNome, labelPreco: TLabel;
   stream: TMemoryStream;
 begin
+  //teste
+  //usuario_logado:= true;
+  //usuario_id:= 19;
+
+
   linha := 0;
   coluna := 0;
   QueryCatalogo.Open;
@@ -144,6 +150,11 @@ begin
   Form4.abrir_carrinho;
 end;
 
+procedure TForm1.btn_inventarioClick(Sender: TObject);
+begin
+
+end;
+
 procedure TForm1.btn_Lista_desejosClick(Sender: TObject);
 begin
   Form5.abrir_wishlist;
@@ -151,6 +162,12 @@ end;
 
 procedure TForm1.Image1Click(Sender: TObject);
 begin
+  if usuario_logado then
+  begin
+    ShowMessage('Usuário já fez login!');
+    exit;
+  end;
+
   Form3.show;
 end;
 

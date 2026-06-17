@@ -1,24 +1,24 @@
 object Form2: TForm2
   Left = 404
-  Height = 981
+  Height = 785
   Top = 0
-  Width = 1479
+  Width = 1183
   Caption = 'Form2'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 785
+  ClientWidth = 1183
   Color = 1972762
-  DesignTimePPI = 120
   LCLVersion = '4.6.0.0'
+  WindowState = wsMaximized
   object box_descricao: TScrollBox
     Left = 0
-    Height = 0
+    Height = 785
     Top = 0
-    Width = 0
-    HorzScrollBar.Page = 1
-    VertScrollBar.Page = 1
+    Width = 1183
+    HorzScrollBar.Page = 1162
+    VertScrollBar.Page = 764
     Align = alClient
-    ClientHeight = 0
-    ClientWidth = 0
+    ClientHeight = 764
+    ClientWidth = 1162
     Font.CharSet = ANSI_CHARSET
     Font.Color = clWhite
     Font.Pitch = fpVariable
@@ -27,20 +27,20 @@ object Form2: TForm2
     ParentFont = False
     TabOrder = 0
     object image_jogo: TImage
-      Left = 200
-      Height = 752
-      Top = 120
-      Width = 1016
+      Left = 160
+      Height = 602
+      Top = 96
+      Width = 813
     end
     object nome: TLabel
-      Left = 200
-      Height = 60
-      Top = 48
-      Width = 132
+      Left = 160
+      Height = 48
+      Top = 38
+      Width = 108
       Caption = 'nome'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -50
+      Font.Height = -40
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -48,15 +48,15 @@ object Form2: TForm2
       ParentFont = False
     end
     object preco: TLabel
-      Left = 200
-      Height = 80
-      Top = 872
-      Width = 184
+      Left = 160
+      Height = 48
+      Top = 698
+      Width = 108
       Caption = 'preco'
       Color = clBackground
       Font.CharSet = ANSI_CHARSET
       Font.Color = clLime
-      Font.Height = -60
+      Font.Height = -48
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -65,10 +65,10 @@ object Form2: TForm2
       ParentFont = False
     end
     object btn_lista_desejo: TSpeedButton
-      Left = 568
-      Height = 44
-      Top = 888
-      Width = 206
+      Left = 454
+      Height = 35
+      Top = 710
+      Width = 165
       Caption = 'Adicionar a lista de desejo'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
@@ -78,10 +78,10 @@ object Form2: TForm2
       OnClick = btn_lista_desejoClick
     end
     object btn_carrinho: TSpeedButton
-      Left = 856
-      Height = 44
-      Top = 888
-      Width = 216
+      Left = 685
+      Height = 35
+      Top = 710
+      Width = 173
       Caption = 'Adicionar ao carrinho'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
@@ -91,10 +91,10 @@ object Form2: TForm2
       OnClick = btn_carrinhoClick
     end
     object Sair: TSpeedButton
-      Left = 48
-      Height = 40
-      Top = 40
-      Width = 96
+      Left = 38
+      Height = 32
+      Top = 32
+      Width = 77
       Caption = '← Voltar'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
@@ -104,28 +104,28 @@ object Form2: TForm2
       OnClick = SairClick
     end
     object box_textodescricao: TScrollBox
-      Left = 1232
-      Height = 712
-      Top = 152
-      Width = 520
+      Left = 986
+      Height = 570
+      Top = 122
+      Width = 416
       HorzScrollBar.Page = 1
       HorzScrollBar.Visible = False
-      VertScrollBar.Page = 32
-      ClientHeight = 708
-      ClientWidth = 516
+      VertScrollBar.Page = 16
+      ClientHeight = 566
+      ClientWidth = 412
       ParentBackground = False
       TabOrder = 0
       object descricao: TLabel
         Left = 0
-        Height = 708
+        Height = 566
         Top = 0
-        Width = 516
+        Width = 412
         Align = alClient
         AutoSize = False
         Caption = 'descricao'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clWhite
-        Font.Height = -25
+        Font.Height = -20
         Font.Name = 'System'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
@@ -136,14 +136,14 @@ object Form2: TForm2
       end
     end
     object release_date: TLabel
-      Left = 1240
-      Height = 32
-      Top = 872
-      Width = 170
+      Left = 992
+      Height = 16
+      Top = 698
+      Width = 85
       Caption = 'release_date'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -25
+      Font.Height = -20
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -151,14 +151,14 @@ object Form2: TForm2
       ParentFont = False
     end
     object studio: TLabel
-      Left = 1240
-      Height = 32
-      Top = 904
-      Width = 80
+      Left = 992
+      Height = 16
+      Top = 723
+      Width = 40
       Caption = 'studio'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -25
+      Font.Height = -20
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -166,33 +166,33 @@ object Form2: TForm2
       ParentFont = False
     end
     object box_comentarios: TScrollBox
-      Left = 200
-      Height = 160
-      Top = 1050
-      Width = 1016
+      Left = 160
+      Height = 128
+      Top = 840
+      Width = 813
       HorzScrollBar.Page = 1
       HorzScrollBar.Visible = False
-      VertScrollBar.Page = 160
+      VertScrollBar.Page = 128
       BorderStyle = bsNone
-      ClientHeight = 160
-      ClientWidth = 1016
+      ClientHeight = 128
+      ClientWidth = 813
       ParentBackground = False
       TabOrder = 1
       object Panel_area_coments: TPanel
         Left = 0
-        Height = 128
-        Top = 32
-        Width = 1016
+        Height = 102
+        Top = 26
+        Width = 813
         Alignment = taLeftJustify
         Caption = 'Sem comentários'
         ParentBackground = False
         TabOrder = 0
       end
       object btn_mostrar_todos1: TSpeedButton
-        Left = 804
-        Height = 28
+        Left = 643
+        Height = 22
         Top = 0
-        Width = 212
+        Width = 170
         Caption = 'Mostrar todos os comentários'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
@@ -203,14 +203,14 @@ object Form2: TForm2
       end
     end
     object titulo_descricao: TLabel
-      Left = 1232
-      Height = 40
-      Top = 104
-      Width = 292
+      Left = 986
+      Height = 32
+      Top = 83
+      Width = 242
       Caption = 'Descrição do jogo:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -33
+      Font.Height = -26
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -218,14 +218,14 @@ object Form2: TForm2
       ParentFont = False
     end
     object Label_comentarios: TLabel
-      Left = 200
-      Height = 48
-      Top = 1000
-      Width = 246
+      Left = 160
+      Height = 32
+      Top = 800
+      Width = 164
       Caption = 'Comentários'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -44
+      Font.Height = -35
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -234,10 +234,10 @@ object Form2: TForm2
     end
   end
   object btn_mostrar_todos: TSpeedButton
-    Left = 808
-    Height = 28
-    Top = 152
-    Width = 212
+    Left = 646
+    Height = 22
+    Top = 122
+    Width = 170
     Caption = 'Mostrar todos os comentários'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
@@ -263,8 +263,8 @@ object Form2: TForm2
         ParamType = ptInput
         SQLType = stInteger
       end>
-    Left = 88
-    Top = 144
+    Left = 70
+    Top = 115
     ParamData = <    
       item
         DataType = ftInteger
@@ -275,8 +275,8 @@ object Form2: TForm2
   end
   object Query_genres: TZQuery
     Params = <>
-    Left = 88
-    Top = 240
+    Left = 70
+    Top = 192
   end
   object Query_comentarios: TZQuery
     Connection = Form1.CnnCatalogo
@@ -298,8 +298,8 @@ object Form2: TForm2
       item
         Name = 'limit'
       end>
-    Left = 88
-    Top = 344
+    Left = 70
+    Top = 275
     ParamData = <    
       item
         DataType = ftInteger
@@ -370,8 +370,8 @@ object Form2: TForm2
         ParamType = ptInput
         SQLType = stInteger
       end>
-    Left = 88
-    Top = 464
+    Left = 70
+    Top = 371
     ParamData = <    
       item
         DataType = ftInteger
@@ -406,8 +406,8 @@ object Form2: TForm2
         ParamType = ptInput
         SQLType = stInteger
       end>
-    Left = 88
-    Top = 568
+    Left = 70
+    Top = 454
     ParamData = <    
       item
         DataType = ftInteger

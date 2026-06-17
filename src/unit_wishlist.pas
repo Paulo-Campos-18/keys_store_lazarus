@@ -43,6 +43,7 @@ type
     Sair: TSpeedButton;
     query_jogo: TZQuery;
     procedure btn_carrinhoClick(Sender: TObject);
+    procedure SairClick(Sender: TObject);
 
   private
     procedure atualizar_qtd_jogos;
@@ -85,6 +86,11 @@ begin
       end;
     end;
     end;
+end;
+
+procedure TForm5.SairClick(Sender: TObject);
+begin
+  close;
 end;
 
 procedure TForm5.abrir_wishlist;

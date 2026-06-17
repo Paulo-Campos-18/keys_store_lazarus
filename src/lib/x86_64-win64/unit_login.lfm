@@ -1,18 +1,22 @@
 object Form3: TForm3
-  Left = 230
-  Height = 938
-  Top = 10
-  Width = 1500
+  Left = 418
+  Height = 750
+  Top = 104
+  Width = 1200
+  BorderStyle = bsSingle
   Caption = 'Form3'
-  ClientHeight = 0
-  ClientWidth = 0
-  DesignTimePPI = 120
+  ClientHeight = 750
+  ClientWidth = 1200
+  Constraints.MaxHeight = 750
+  Constraints.MaxWidth = 1200
+  Constraints.MinHeight = 750
+  Constraints.MinWidth = 1200
   LCLVersion = '4.6.0.0'
   object Image2: TImage
     Left = 0
-    Height = 0
+    Height = 750
     Top = 0
-    Width = 0
+    Width = 1200
     Align = alClient
     Picture.Data = {
       1754506F727461626C654E6574776F726B4772617068696385640F0089504E47
@@ -31545,32 +31549,32 @@ object Form3: TForm3
     Stretch = True
   end
   object Panel_login: TPanel
-    Left = 440
-    Height = 600
-    Top = 170
-    Width = 620
+    Left = 352
+    Height = 480
+    Top = 136
+    Width = 496
     BevelOuter = bvNone
-    ClientHeight = 600
-    ClientWidth = 620
+    ClientHeight = 480
+    ClientWidth = 496
     TabOrder = 0
     object Label1: TLabel
-      Left = 176
-      Height = 32
-      Top = 208
-      Width = 62
+      Left = 141
+      Height = 25
+      Top = 166
+      Width = 50
       Caption = 'Email:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -24
+      Font.Height = -19
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Image4: TImage
-      Left = 130
-      Height = 32
-      Top = 304
-      Width = 38
+      Left = 104
+      Height = 26
+      Top = 243
+      Width = 30
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963E81C000089504E47
         0D0A1A0A0000000D4948445200000200000002000806000000F478D4FA000000
@@ -31809,42 +31813,42 @@ object Form3: TForm3
       Stretch = True
     end
     object Label2: TLabel
-      Left = 176
-      Height = 32
-      Top = 304
-      Width = 71
+      Left = 141
+      Height = 25
+      Top = 243
+      Width = 56
       Caption = 'Senha:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -24
+      Font.Height = -19
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object campo_email: TEdit
-      Left = 130
-      Height = 28
-      Top = 248
-      Width = 362
+      Left = 104
+      Height = 23
+      Top = 198
+      Width = 290
       MaxLength = 100
       TabOrder = 0
     end
     object campo_senha: TEdit
-      Left = 130
-      Height = 28
-      Top = 344
-      Width = 360
+      Left = 104
+      Height = 23
+      Top = 275
+      Width = 288
       MaxLength = 40
       TabOrder = 1
     end
     object btn_login: TSpeedButton
-      Left = 128
-      Height = 60
-      Top = 424
-      Width = 362
+      Left = 102
+      Height = 48
+      Top = 339
+      Width = 290
       Caption = 'Login'
       Font.CharSet = ANSI_CHARSET
-      Font.Height = -34
+      Font.Height = -27
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -31853,26 +31857,26 @@ object Form3: TForm3
       OnClick = btn_loginClick
     end
     object btn_recuperar_senha: TSpeedButton
-      Left = 128
-      Height = 40
-      Top = 528
-      Width = 147
+      Left = 102
+      Height = 32
+      Top = 422
+      Width = 118
       Caption = 'Esqueceu a senha?'
       OnClick = btn_recuperar_senhaClick
     end
     object btn_registrar: TSpeedButton
-      Left = 336
-      Height = 40
-      Top = 528
-      Width = 156
+      Left = 269
+      Height = 32
+      Top = 422
+      Width = 125
       Caption = 'Registrar-se'
       OnClick = btn_registrarClick
     end
     object Image3: TImage
-      Left = 130
-      Height = 34
-      Top = 208
-      Width = 38
+      Left = 104
+      Height = 27
+      Top = 166
+      Width = 30
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963DE25000089504E47
         0D0A1A0A0000000D4948445200000200000002000806000000F478D4FA000000
@@ -32183,159 +32187,159 @@ object Form3: TForm3
     end
   end
   object Panel_registrar: TPanel
-    Left = 440
-    Height = 600
-    Top = 170
-    Width = 620
+    Left = 352
+    Height = 480
+    Top = 136
+    Width = 496
     BevelOuter = bvNone
-    ClientHeight = 600
-    ClientWidth = 620
+    ClientHeight = 480
+    ClientWidth = 496
     TabOrder = 1
     Visible = False
     object Label3: TLabel
-      Left = 97
-      Height = 28
-      Top = 216
-      Width = 58
+      Left = 78
+      Height = 21
+      Top = 173
+      Width = 46
       Caption = 'Nome:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -20
+      Font.Height = -16
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object campo_primeiro_nome: TEdit
-      Left = 168
-      Height = 28
-      Top = 216
-      Width = 278
+      Left = 134
+      Height = 23
+      Top = 173
+      Width = 222
       TabOrder = 0
       OnChange = campo_primeiro_nomeChange
     end
     object campo_ultimo_nome: TEdit
-      Left = 168
-      Height = 28
-      Top = 264
-      Width = 278
+      Left = 134
+      Height = 23
+      Top = 211
+      Width = 222
       TabOrder = 1
     end
     object campo_apelido: TEdit
-      Left = 168
-      Height = 28
-      Top = 360
-      Width = 278
+      Left = 134
+      Height = 23
+      Top = 288
+      Width = 222
       TabOrder = 2
     end
     object campo_email_regis: TEdit
-      Left = 168
-      Height = 28
-      Top = 408
-      Width = 278
+      Left = 134
+      Height = 23
+      Top = 326
+      Width = 222
       TabOrder = 3
     end
     object campo_senha_regis: TEdit
-      Left = 168
-      Height = 28
-      Top = 456
-      Width = 278
+      Left = 134
+      Height = 23
+      Top = 365
+      Width = 222
       TabOrder = 4
     end
     object Label4: TLabel
-      Left = 82
-      Height = 28
-      Top = 360
-      Width = 73
+      Left = 66
+      Height = 21
+      Top = 288
+      Width = 56
       Caption = 'Apelido:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -20
+      Font.Height = -16
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 49
-      Height = 28
-      Top = 264
-      Width = 106
+      Left = 39
+      Height = 21
+      Top = 211
+      Width = 84
       Caption = 'Sobrenome:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -20
+      Font.Height = -16
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 104
-      Height = 28
-      Top = 408
-      Width = 51
+      Left = 83
+      Height = 21
+      Top = 326
+      Width = 41
       Caption = 'Email:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -20
+      Font.Height = -16
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 98
-      Height = 28
-      Top = 456
-      Width = 57
+      Left = 78
+      Height = 21
+      Top = 365
+      Width = 46
       Caption = 'Senha:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -20
+      Font.Height = -16
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
       OnClick = Label7Click
     end
     object Label8: TLabel
-      Left = 101
-      Height = 28
-      Top = 312
-      Width = 53
+      Left = 81
+      Height = 21
+      Top = 250
+      Width = 41
       Caption = 'Idade:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -20
+      Font.Height = -16
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
     end
     object campo_idade: TEdit
-      Left = 168
-      Height = 28
-      Top = 312
-      Width = 278
+      Left = 134
+      Height = 23
+      Top = 250
+      Width = 222
       TabOrder = 5
     end
     object btn_voltar_login: TSpeedButton
-      Left = 128
-      Height = 40
-      Top = 528
-      Width = 156
+      Left = 102
+      Height = 32
+      Top = 422
+      Width = 125
       Caption = 'Cancelar'
       OnClick = btn_voltar_loginClick
     end
     object btn_registrase: TSpeedButton
-      Left = 336
-      Height = 40
-      Top = 528
-      Width = 156
+      Left = 269
+      Height = 32
+      Top = 422
+      Width = 125
       Caption = 'Registrar-se'
       OnClick = btn_registraseClick
     end
   end
   object Image1: TImage
-    Left = 672
+    Left = 528
     Height = 136
-    Top = 200
-    Width = 136
+    Top = 144
+    Width = 134
     Picture.Data = {
       0A544A706567496D616765B5060000FFD8FFE000104A46494600010100000100
       010000FFDB0043000402030303020403030304040404050906050505050B0808
@@ -32409,8 +32413,8 @@ object Form3: TForm3
       item
         Name = 'senha'
       end>
-    Left = 151
-    Top = 128
+    Left = 121
+    Top = 102
     ParamData = <    
       item
         Name = 'email'
@@ -32459,8 +32463,8 @@ object Form3: TForm3
         ParamType = ptInput
         SQLType = stInteger
       end>
-    Left = 151
-    Top = 249
+    Left = 121
+    Top = 199
     ParamData = <    
       item
         DataType = ftString

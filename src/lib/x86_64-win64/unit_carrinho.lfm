@@ -1,29 +1,29 @@
 object Form4: TForm4
-  Left = 318
-  Height = 801
-  Top = 26
-  Width = 1550
+  Left = 328
+  Height = 747
+  Top = 166
+  Width = 1352
   Caption = 'Form4'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 747
+  ClientWidth = 1352
   Color = 3355443
-  DesignTimePPI = 120
   LCLVersion = '4.6.0.0'
+  WindowState = wsMaximized
   OnCreate = FormCreate
   object GroupBox1: TGroupBox
-    Left = 352
-    Height = 628
-    Top = 168
-    Width = 946
-    ClientHeight = 603
-    ClientWidth = 942
+    Left = 282
+    Height = 502
+    Top = 134
+    Width = 757
+    ClientHeight = 482
+    ClientWidth = 753
     ParentBackground = False
     TabOrder = 0
     object DBGrid1: TDBGrid
       Left = 0
-      Height = 603
+      Height = 482
       Top = 0
-      Width = 942
+      Width = 753
       Align = alClient
       Color = clWindow
       Columns = <      
@@ -37,7 +37,7 @@ object Form4: TForm4
         end>
       DataSource = DataSource1
       Font.CharSet = ANSI_CHARSET
-      Font.Height = -30
+      Font.Height = -24
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
@@ -45,43 +45,43 @@ object Form4: TForm4
     end
   end
   object btn_remover: TSpeedButton
-    Left = 1136
-    Height = 44
-    Top = 816
-    Width = 156
+    Left = 696
+    Height = 35
+    Top = 653
+    Width = 125
     Caption = 'Remover jogo'
     OnClick = btn_removerClick
   end
   object SpeedButton2: TSpeedButton
-    Left = 1352
-    Height = 44
-    Top = 296
-    Width = 136
+    Left = 1082
+    Height = 35
+    Top = 237
+    Width = 109
   end
   object SpeedButton3: TSpeedButton
-    Left = 1512
-    Height = 44
-    Top = 296
-    Width = 136
+    Left = 1210
+    Height = 35
+    Top = 237
+    Width = 109
   end
   object Panel1: TPanel
-    Left = 1352
-    Height = 90
-    Top = 184
-    Width = 296
-    ClientHeight = 90
-    ClientWidth = 296
+    Left = 1082
+    Height = 72
+    Top = 147
+    Width = 237
+    ClientHeight = 72
+    ClientWidth = 237
     ParentBackground = False
     TabOrder = 1
     object Label_nome: TLabel
-      Left = 10
-      Height = 32
-      Top = 11
-      Width = 200
+      Left = 8
+      Height = 16
+      Top = 9
+      Width = 100
       Caption = 'Total estimado:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -25
+      Font.Height = -20
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -89,14 +89,14 @@ object Form4: TForm4
       ParentFont = False
     end
     object Label_valor_total: TLabel
-      Left = 10
-      Height = 32
-      Top = 40
-      Width = 128
+      Left = 8
+      Height = 16
+      Top = 32
+      Width = 64
       Caption = 'aaaaaaaa'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clLime
-      Font.Height = -25
+      Font.Height = -20
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -105,10 +105,10 @@ object Form4: TForm4
     end
   end
   object Sair: TSpeedButton
-    Left = 208
-    Height = 40
-    Top = 40
-    Width = 96
+    Left = 50
+    Height = 32
+    Top = 30
+    Width = 77
     Caption = '← Voltar'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clBlack
@@ -118,42 +118,50 @@ object Form4: TForm4
     OnClick = SairClick
   end
   object nome1: TLabel
-    Left = 352
-    Height = 60
-    Top = 88
-    Width = 210
+    Left = 282
+    Height = 48
+    Top = 70
+    Width = 165
     Caption = 'Carrinho'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clWhite
-    Font.Height = -50
+    Font.Height = -40
     Font.Name = 'System'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object btn_remover1: TSpeedButton
-    Left = 936
-    Height = 44
-    Top = 816
-    Width = 156
-    Caption = 'Abrir descrição'
-    OnClick = btn_removerClick
-  end
   object qtd_jogo_carrinho: TLabel
-    Left = 352
-    Height = 32
-    Top = 816
-    Width = 200
+    Left = 282
+    Height = 16
+    Top = 653
+    Width = 100
     Caption = 'Total estimado:'
     Font.CharSet = ANSI_CHARSET
     Font.Color = clWhite
-    Font.Height = -25
+    Font.Height = -20
     Font.Name = 'System'
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     Font.Style = [fsBold]
     ParentFont = False
+  end
+  object SpeedButton1: TSpeedButton
+    Left = 848
+    Height = 35
+    Top = 653
+    Width = 191
+    Caption = 'Contunar para o pagamento'
+    OnClick = SpeedButton1Click
+  end
+  object btn_detalhes: TSpeedButton
+    Left = 544
+    Height = 35
+    Top = 653
+    Width = 125
+    Caption = 'Abrir detalhes'
+    OnClick = btn_detalhesClick
   end
   object Query_carrinho: TZQuery
     Connection = Form1.CnnCatalogo
@@ -170,8 +178,8 @@ object Form4: TForm4
         ParamType = ptInput
         SQLType = stInteger
       end>
-    Left = 80
-    Top = 208
+    Left = 64
+    Top = 166
     ParamData = <    
       item
         DataType = ftInteger
@@ -225,8 +233,8 @@ object Form4: TForm4
       item
         Name = 'user_id'
       end>
-    Left = 80
-    Top = 312
+    Left = 64
+    Top = 250
     ParamData = <    
       item
         Name = 'user_id'
@@ -234,8 +242,8 @@ object Form4: TForm4
   end
   object DataSource1: TDataSource
     DataSet = Query_carrinho
-    Left = 80
-    Top = 512
+    Left = 64
+    Top = 410
   end
   object Query_remover: TZQuery
     Connection = Form1.CnnCatalogo
@@ -254,8 +262,8 @@ object Form4: TForm4
       item
         Name = 'game_id'
       end>
-    Left = 80
-    Top = 408
+    Left = 64
+    Top = 326
     ParamData = <    
       item
         DataType = ftInteger
@@ -305,8 +313,8 @@ object Form4: TForm4
         ParamType = ptInput
         SQLType = stInteger
       end>
-    Left = 80
-    Top = 136
+    Left = 64
+    Top = 109
     ParamData = <    
       item
         DataType = ftInteger
