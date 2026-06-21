@@ -1,19 +1,19 @@
 object Form1: TForm1
-  Left = 225
-  Height = 844
-  Top = 55
-  Width = 1539
+  Left = 1912
+  Height = 1009
+  Top = -8
+  Width = 1920
   Caption = 'Form1'
-  ClientHeight = 844
-  ClientWidth = 1539
+  ClientHeight = 1009
+  ClientWidth = 1920
   LCLVersion = '4.6.0.0'
   WindowState = wsFullScreen
   OnCreate = FormCreate
   object ScrollBoxCatalogo: TScrollBox
     Left = 0
-    Height = 844
+    Height = 1009
     Top = 0
-    Width = 1539
+    Width = 1920
     HorzScrollBar.Page = 1
     VertScrollBar.Page = 1
     Align = alClient
@@ -27,16 +27,16 @@ object Form1: TForm1
     Left = -454
     Height = 70
     Top = 0
-    Width = 1990
+    Width = 2374
     BevelOuter = bvNone
     ClientHeight = 70
-    ClientWidth = 1990
+    ClientWidth = 2374
     Color = 3355443
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
     object Image1: TImage
-      Left = 1916
+      Left = 2300
       Height = 56
       Top = 0
       Width = 56
@@ -102,33 +102,33 @@ object Form1: TForm1
       OnClick = Image1Click
     end
     object btn_carrinho: TSpeedButton
-      Left = 1744
+      Left = 2128
       Height = 33
-      Top = 23
+      Top = 17
       Width = 135
       Caption = 'Carrinho'
       OnClick = btn_carrinhoClick
     end
     object btn_Lista_desejos: TSpeedButton
-      Left = 1568
+      Left = 1952
       Height = 33
-      Top = 22
+      Top = 16
       Width = 135
       Caption = 'Lista de desejos'
       OnClick = btn_Lista_desejosClick
     end
     object btn_inventario: TSpeedButton
-      Left = 1392
+      Left = 1776
       Height = 33
-      Top = 22
+      Top = 16
       Width = 135
-      Caption = 'Inventário'
+      Caption = 'Biblioteca'
       OnClick = btn_inventarioClick
     end
     object Image2: TImage
-      Left = 1744
+      Left = 2128
       Height = 33
-      Top = 22
+      Top = 16
       Width = 35
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963351C000089504E47

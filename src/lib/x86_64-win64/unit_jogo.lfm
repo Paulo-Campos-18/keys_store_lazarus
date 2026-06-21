@@ -1,12 +1,12 @@
 object Form2: TForm2
-  Left = 404
+  Left = 526
   Height = 785
-  Top = 0
+  Top = 78
   Width = 1183
   Caption = 'Form2'
   ClientHeight = 785
   ClientWidth = 1183
-  Color = 1972762
+  Color = 3355443
   LCLVersion = '4.6.0.0'
   WindowState = wsMaximized
   object box_descricao: TScrollBox
@@ -27,15 +27,15 @@ object Form2: TForm2
     ParentFont = False
     TabOrder = 0
     object image_jogo: TImage
-      Left = 160
-      Height = 602
-      Top = 96
-      Width = 813
+      Left = 274
+      Height = 620
+      Top = 80
+      Width = 870
     end
     object nome: TLabel
-      Left = 160
+      Left = 274
       Height = 48
-      Top = 38
+      Top = 32
       Width = 108
       Caption = 'nome'
       Font.CharSet = ANSI_CHARSET
@@ -48,9 +48,9 @@ object Form2: TForm2
       ParentFont = False
     end
     object preco: TLabel
-      Left = 160
+      Left = 274
       Height = 48
-      Top = 698
+      Top = 700
       Width = 108
       Caption = 'preco'
       Color = clBackground
@@ -65,9 +65,9 @@ object Form2: TForm2
       ParentFont = False
     end
     object btn_lista_desejo: TSpeedButton
-      Left = 454
+      Left = 712
       Height = 35
-      Top = 710
+      Top = 712
       Width = 165
       Caption = 'Adicionar a lista de desejo'
       Font.CharSet = ANSI_CHARSET
@@ -78,9 +78,9 @@ object Form2: TForm2
       OnClick = btn_lista_desejoClick
     end
     object btn_carrinho: TSpeedButton
-      Left = 685
+      Left = 976
       Height = 35
-      Top = 710
+      Top = 712
       Width = 173
       Caption = 'Adicionar ao carrinho'
       Font.CharSet = ANSI_CHARSET
@@ -104,9 +104,9 @@ object Form2: TForm2
       OnClick = SairClick
     end
     object box_textodescricao: TScrollBox
-      Left = 986
+      Left = 1312
       Height = 570
-      Top = 122
+      Top = 119
       Width = 416
       HorzScrollBar.Page = 1
       HorzScrollBar.Visible = False
@@ -136,9 +136,9 @@ object Form2: TForm2
       end
     end
     object release_date: TLabel
-      Left = 992
+      Left = 1318
       Height = 16
-      Top = 698
+      Top = 695
       Width = 85
       Caption = 'release_date'
       Font.CharSet = ANSI_CHARSET
@@ -151,9 +151,9 @@ object Form2: TForm2
       ParentFont = False
     end
     object studio: TLabel
-      Left = 992
+      Left = 1318
       Height = 16
-      Top = 723
+      Top = 720
       Width = 40
       Caption = 'studio'
       Font.CharSet = ANSI_CHARSET
@@ -166,9 +166,9 @@ object Form2: TForm2
       ParentFont = False
     end
     object box_comentarios: TScrollBox
-      Left = 160
+      Left = 274
       Height = 128
-      Top = 840
+      Top = 842
       Width = 813
       HorzScrollBar.Page = 1
       HorzScrollBar.Visible = False
@@ -182,7 +182,7 @@ object Form2: TForm2
         Left = 0
         Height = 102
         Top = 26
-        Width = 813
+        Width = 808
         Alignment = taLeftJustify
         Caption = 'Sem comentários'
         ParentBackground = False
@@ -203,9 +203,9 @@ object Form2: TForm2
       end
     end
     object titulo_descricao: TLabel
-      Left = 986
+      Left = 1312
       Height = 32
-      Top = 83
+      Top = 80
       Width = 242
       Caption = 'Descrição do jogo:'
       Font.CharSet = ANSI_CHARSET
@@ -218,14 +218,75 @@ object Form2: TForm2
       ParentFont = False
     end
     object Label_comentarios: TLabel
-      Left = 160
+      Left = 274
       Height = 32
-      Top = 800
+      Top = 802
       Width = 164
       Caption = 'Comentários'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -35
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label_total_disponivel: TLabel
+      Left = 1462
+      Height = 16
+      Top = 753
+      Width = 148
+      Caption = 'Label_total_disponivel'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -20
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label_generos: TLabel
+      Left = 1350
+      Height = 16
+      Top = 829
+      Width = 97
+      Caption = 'Label_generos'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+      WordWrap = True
+    end
+    object Label1: TLabel
+      Left = 1318
+      Height = 32
+      Top = 781
+      Width = 110
+      Caption = 'Gêneros'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -24
+      Font.Name = 'System'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 1318
+      Height = 16
+      Top = 753
+      Width = 133
+      Caption = 'Chaves disponíveis:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -20
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -263,8 +324,8 @@ object Form2: TForm2
         ParamType = ptInput
         SQLType = stInteger
       end>
-    Left = 70
-    Top = 115
+    Left = 184
+    Top = 117
     ParamData = <    
       item
         DataType = ftInteger
@@ -275,8 +336,8 @@ object Form2: TForm2
   end
   object Query_genres: TZQuery
     Params = <>
-    Left = 70
-    Top = 192
+    Left = 184
+    Top = 194
   end
   object Query_comentarios: TZQuery
     Connection = Form1.CnnCatalogo
@@ -298,8 +359,8 @@ object Form2: TForm2
       item
         Name = 'limit'
       end>
-    Left = 70
-    Top = 275
+    Left = 184
+    Top = 277
     ParamData = <    
       item
         DataType = ftInteger
@@ -370,8 +431,8 @@ object Form2: TForm2
         ParamType = ptInput
         SQLType = stInteger
       end>
-    Left = 70
-    Top = 371
+    Left = 184
+    Top = 373
     ParamData = <    
       item
         DataType = ftInteger
@@ -406,8 +467,8 @@ object Form2: TForm2
         ParamType = ptInput
         SQLType = stInteger
       end>
-    Left = 70
-    Top = 454
+    Left = 184
+    Top = 456
     ParamData = <    
       item
         DataType = ftInteger
@@ -415,6 +476,58 @@ object Form2: TForm2
         ParamType = ptInput
         SQLType = stInteger
       end    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+  end
+  object Query_total_keys: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'select g.id, g.name, count(k.id) as Total_disponivel'
+      'from games g, keys k'
+      'where g.id = k.game_id'
+      'and k.key_status_id = 1'
+      'and g.id = :game_id'
+      'group by g.id, g.name;'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 186
+    Top = 514
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+  end
+  object Query_generos: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'select g.name'
+      'from genres g, game_genres gg'
+      'where g.id = gg.genre_id'
+      'and gg.game_id = :game_id;'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'game_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 186
+    Top = 578
+    ParamData = <    
       item
         DataType = ftInteger
         Name = 'game_id'

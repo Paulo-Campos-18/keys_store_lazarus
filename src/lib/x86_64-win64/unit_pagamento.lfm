@@ -1,11 +1,11 @@
 object Form6: TForm6
-  Left = 300
-  Height = 720
-  Top = 105
-  Width = 1537
+  Left = 1921
+  Height = 991
+  Top = 1
+  Width = 1902
   Caption = 'Form6'
-  ClientHeight = 720
-  ClientWidth = 1537
+  ClientHeight = 991
+  ClientWidth = 1902
   Color = 3355443
   LCLVersion = '4.6.0.0'
   Scaled = False
@@ -155,11 +155,11 @@ object Form6: TForm6
     OnClick = SairClick
   end
   object Panel_qr_code: TPanel
-    Left = 1112
-    Height = 594
-    Top = 808
+    Left = 1224
+    Height = 600
+    Top = 760
     Width = 800
-    ClientHeight = 594
+    ClientHeight = 600
     ClientWidth = 800
     ParentBackground = False
     TabOrder = 3
@@ -2907,12 +2907,20 @@ object Form6: TForm6
       Stretch = True
     end
     object btn_cancelar: TSpeedButton
-      Left = 328
+      Left = 232
       Height = 32
       Top = 544
       Width = 120
       Caption = 'Sair'
       OnClick = btn_cancelarClick
+    end
+    object btn_pago: TSpeedButton
+      Left = 472
+      Height = 32
+      Top = 544
+      Width = 120
+      Caption = 'Paguei !'
+      OnClick = btn_pagoClick
     end
   end
   object Query_itens_pagamento: TZQuery
@@ -2962,5 +2970,10 @@ object Form6: TForm6
       item
         Name = 'user_id'
       end>
+  end
+  object Query_transacao: TZQuery
+    Params = <>
+    Left = 81
+    Top = 297
   end
 end

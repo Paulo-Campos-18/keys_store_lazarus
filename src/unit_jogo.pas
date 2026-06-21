@@ -19,6 +19,10 @@ type
     btn_mostrar_todos1: TSpeedButton;
     descricao: TLabel;
     image_jogo: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label_generos: TLabel;
+    Label_total_disponivel: TLabel;
     Label_comentarios: TLabel;
     Query_adicionar_wishlist: TZQuery;
     titulo_descricao: TLabel;
@@ -39,6 +43,8 @@ type
     Query_adicionar_carrinho: TZQuery;
     box_comentarios: TScrollBox;
     studio: TLabel;
+    Query_total_keys: TZQuery;
+    Query_generos: TZQuery;
     procedure btn_carrinhoClick(Sender: TObject);
     procedure btn_lista_desejoClick(Sender: TObject);
     procedure descricaoClick(Sender: TObject);
@@ -157,12 +163,45 @@ begin
    Query_comentarios.ParamByName('limit').AsInteger := 4;
    Query_comentarios.Open;
 
+   //Preenchendo labels
    nome.Caption := Query_jogo.FieldByName('name').AsString;
    studio.Caption := 'Estudio: ' + Query_jogo.FieldByName('studio').AsString;
    preco.Caption := 'R$ ' + Query_jogo.FieldByName('price').AsString;
    descricao.Caption := Query_jogo.FieldByName('description').AsString;
    release_date.Caption := 'Data de lançamento: ' + FormatDateTime('dd/mm/yyyy',
    Query_jogo.FieldByName('release_date').AsDateTime);
+
+   //Preenchendo total de keys
+   Query_total_keys.Close;
+   Query_total_keys.ParamByName('game_id').AsInteger := IdJogo;
+   Query_total_keys.Open;
+
+   Label_total_disponivel.Caption := Query_total_keys.FieldByName('Total_disponivel').AsString;
+
+   if Query_total_keys.FieldByName('Total_disponivel').AsInteger > 0 then
+     Label_total_disponivel.Font.Color := clLime
+   else if Query_total_keys.FieldByName('Total_disponivel').AsInteger = 0 then
+     Label_total_disponivel.Font.Color := clWhite
+   else
+     Label_total_disponivel.Font.Color := clRed;
+
+   Query_total_keys.Close;
+
+
+   //Preenchendo generos
+   Query_generos.Close;
+   Query_generos.ParamByName('game_id').AsInteger := IdJogo;
+   Query_generos.Open;
+
+   while not Query_generos.EOF do
+    begin
+     Label_generos.Caption := Label_generos.Caption + Query_generos.FieldByName('name').AsString;
+     Query_generos.Next;
+     if not Query_generos.EOF then
+    Label_generos.Caption := Label_generos.Caption + ', ' + sLineBreak;
+    end;
+
+Query_generos.Close;
 
    try
       stream := TMemoryStream.Create;

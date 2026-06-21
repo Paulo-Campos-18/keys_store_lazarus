@@ -23,10 +23,13 @@ type
     ScrollBox_pagamento: TScrollBox;
     btn_finalizar: TSpeedButton;
     btn_cancelar: TSpeedButton;
+    btn_pago: TSpeedButton;
     StaticText1: TStaticText;
+    Query_transacao: TZQuery;
     procedure btn_cancelarClick(Sender: TObject);
     procedure btn_finalizarClick(Sender: TObject);
     procedure SairClick(Sender: TObject);
+    procedure btn_pagoClick(Sender: TObject);
     procedure StaticText1Click(Sender: TObject);
   private
     procedure atualizar_valor_total;
@@ -67,6 +70,12 @@ implementation
 
 procedure TForm6.SairClick(Sender: TObject);
 begin
+  close;
+end;
+
+procedure TForm6.btn_pagoClick(Sender: TObject);
+begin
+  ShowMessage('Confiamos em você! Transação concluida!');
   close;
 end;
 
