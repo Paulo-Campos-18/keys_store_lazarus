@@ -1,24 +1,24 @@
 object Form2: TForm2
-  Left = 526
-  Height = 785
-  Top = 78
-  Width = 1183
+  Left = 1921
+  Height = 991
+  Top = 1
+  Width = 1902
   Caption = 'Form2'
-  ClientHeight = 785
-  ClientWidth = 1183
+  ClientHeight = 991
+  ClientWidth = 1902
   Color = 3355443
   LCLVersion = '4.6.0.0'
   WindowState = wsMaximized
   object box_descricao: TScrollBox
     Left = 0
-    Height = 785
+    Height = 991
     Top = 0
-    Width = 1183
-    HorzScrollBar.Page = 1162
-    VertScrollBar.Page = 764
+    Width = 1902
+    HorzScrollBar.Page = 1728
+    VertScrollBar.Page = 970
     Align = alClient
-    ClientHeight = 764
-    ClientWidth = 1162
+    ClientHeight = 987
+    ClientWidth = 1898
     Font.CharSet = ANSI_CHARSET
     Font.Color = clWhite
     Font.Pitch = fpVariable
@@ -65,7 +65,7 @@ object Form2: TForm2
       ParentFont = False
     end
     object btn_lista_desejo: TSpeedButton
-      Left = 712
+      Left = 784
       Height = 35
       Top = 712
       Width = 165
@@ -248,14 +248,14 @@ object Form2: TForm2
       ParentFont = False
     end
     object Label_generos: TLabel
-      Left = 1350
+      Left = 1320
       Height = 16
-      Top = 829
+      Top = 824
       Width = 97
       Caption = 'Label_generos'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -21
+      Font.Height = -20
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft

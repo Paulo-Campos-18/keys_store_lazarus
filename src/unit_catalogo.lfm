@@ -1,19 +1,19 @@
 object Form1: TForm1
-  Left = 1912
-  Height = 1009
-  Top = -8
-  Width = 1920
+  Left = 283
+  Height = 844
+  Top = 156
+  Width = 1539
   Caption = 'Form1'
-  ClientHeight = 1009
-  ClientWidth = 1920
+  ClientHeight = 844
+  ClientWidth = 1539
   LCLVersion = '4.6.0.0'
   WindowState = wsFullScreen
   OnCreate = FormCreate
   object ScrollBoxCatalogo: TScrollBox
     Left = 0
-    Height = 1009
+    Height = 844
     Top = 0
-    Width = 1920
+    Width = 1539
     HorzScrollBar.Page = 1
     VertScrollBar.Page = 1
     Align = alClient
@@ -110,17 +110,17 @@ object Form1: TForm1
       OnClick = btn_carrinhoClick
     end
     object btn_Lista_desejos: TSpeedButton
-      Left = 1952
+      Left = 672
       Height = 33
-      Top = 16
+      Top = 17
       Width = 135
       Caption = 'Lista de desejos'
       OnClick = btn_Lista_desejosClick
     end
     object btn_inventario: TSpeedButton
-      Left = 1776
+      Left = 472
       Height = 33
-      Top = 16
+      Top = 17
       Width = 135
       Caption = 'Biblioteca'
       OnClick = btn_inventarioClick
@@ -377,8 +377,8 @@ object Form1: TForm1
     Password = 'abc'
     Protocol = 'postgresql'
     LibraryLocation = 'C:\Program Files\PostgreSQL\17\bin\libpq.dll'
-    Left = 192
-    Top = 16
+    Left = 96
+    Top = 240
   end
   object QueryCatalogo: TZQuery
     Connection = CnnCatalogo
@@ -390,8 +390,8 @@ object Form1: TForm1
       'g.deleted = 0;'
     )
     Params = <>
-    Left = 275
-    Top = 16
+    Left = 208
+    Top = 240
     object QueryCatalogoid: TZIntegerField
       FieldKind = fkData
       FieldName = 'id'

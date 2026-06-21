@@ -176,14 +176,19 @@ begin
    Query_total_keys.ParamByName('game_id').AsInteger := IdJogo;
    Query_total_keys.Open;
 
-   Label_total_disponivel.Caption := Query_total_keys.FieldByName('Total_disponivel').AsString;
-
-   if Query_total_keys.FieldByName('Total_disponivel').AsInteger > 0 then
-     Label_total_disponivel.Font.Color := clLime
-   else if Query_total_keys.FieldByName('Total_disponivel').AsInteger = 0 then
-     Label_total_disponivel.Font.Color := clWhite
+   if Query_total_keys.IsEmpty then
+   begin
+     Label_total_disponivel.Caption := '0';
+     Label_total_disponivel.Font.Color := clWhite;
+   end
    else
-     Label_total_disponivel.Font.Color := clRed;
+   begin
+     Label_total_disponivel.Caption := Query_total_keys.FieldByName('Total_disponivel').AsString;
+     if Query_total_keys.FieldByName('Total_disponivel').AsInteger > 0 then
+       Label_total_disponivel.Font.Color := clLime
+     else
+       Label_total_disponivel.Font.Color := clWhite;
+   end;
 
    Query_total_keys.Close;
 
@@ -193,9 +198,10 @@ begin
    Query_generos.ParamByName('game_id').AsInteger := IdJogo;
    Query_generos.Open;
 
+   Label_generos.caption := '';
    while not Query_generos.EOF do
     begin
-     Label_generos.Caption := Label_generos.Caption + Query_generos.FieldByName('name').AsString;
+     Label_generos.Caption := Label_generos.Caption + '- ' + Query_generos.FieldByName('name').AsString;
      Query_generos.Next;
      if not Query_generos.EOF then
     Label_generos.Caption := Label_generos.Caption + ', ' + sLineBreak;

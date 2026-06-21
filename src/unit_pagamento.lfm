@@ -1,11 +1,11 @@
 object Form6: TForm6
-  Left = 1921
-  Height = 991
-  Top = 1
-  Width = 1902
+  Left = 1912
+  Height = 1009
+  Top = -8
+  Width = 1920
   Caption = 'Form6'
-  ClientHeight = 991
-  ClientWidth = 1902
+  ClientHeight = 1009
+  ClientWidth = 1920
   Color = 3355443
   LCLVersion = '4.6.0.0'
   Scaled = False
@@ -155,9 +155,9 @@ object Form6: TForm6
     OnClick = SairClick
   end
   object Panel_qr_code: TPanel
-    Left = 1224
+    Left = 1112
     Height = 600
-    Top = 760
+    Top = 728
     Width = 800
     ClientHeight = 600
     ClientWidth = 800
@@ -2972,8 +2972,158 @@ object Form6: TForm6
       end>
   end
   object Query_transacao: TZQuery
-    Params = <>
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'INSERT INTO transactions (order_id, payment_method_id, status, total_price)'
+      'VALUES (:order_id, :payment_method_id, ''approved'', :total_price);'
+    )
+    Params = <    
+      item
+        Name = 'order_id'
+      end    
+      item
+        Name = 'payment_method_id'
+      end    
+      item
+        Name = 'total_price'
+      end>
     Left = 81
     Top = 297
+    ParamData = <    
+      item
+        Name = 'order_id'
+      end    
+      item
+        Name = 'payment_method_id'
+      end    
+      item
+        Name = 'total_price'
+      end>
+  end
+  object Query_criar_order: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'INSERT INTO orders (user_id) VALUES (:user_id);'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 81
+    Top = 374
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+  end
+  object Query_alocar_chave: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'INSERT INTO order_keys (order_id, key_id, unit_price)'
+      'SELECT :order_id, k.id, g.price'
+      'FROM cart c, keys k, games g'
+      'WHERE c.game_id = g.id'
+      'AND k.game_id = c.game_id'
+      'AND k.key_status_id = 1'
+      'AND k.id = (SELECT MIN(id) FROM keys WHERE game_id = c.game_id AND key_status_id = 1)'
+      'AND c.user_id = :user_id;'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'order_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 80
+    Top = 440
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'order_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+  end
+  object Query_vender_chaves: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'UPDATE keys SET key_status_id = 3'
+      'WHERE id IN ('
+      '  SELECT key_id FROM order_keys WHERE order_id = :order_id'
+      ');'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'order_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 80
+    Top = 512
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'order_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+  end
+  object Query_limpar_carrinho: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'DELETE FROM cart WHERE user_id = :user_id;'
+    )
+    Params = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+    Left = 81
+    Top = 576
+    ParamData = <    
+      item
+        DataType = ftInteger
+        Name = 'user_id'
+        ParamType = ptInput
+        SQLType = stInteger
+      end>
+  end
+  object Query_buscar_order: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'SELECT MAX(id) as id FROM orders WHERE user_id = :user_id;'
+    )
+    Params = <    
+      item
+        Name = 'user_id'
+      end>
+    Left = 80
+    Top = 645
+    ParamData = <    
+      item
+        Name = 'user_id'
+      end>
   end
 end

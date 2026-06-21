@@ -123,6 +123,7 @@ end;
 procedure TForm4.SpeedButton1Click(Sender: TObject);
 begin
   Form6.abrir_pagamento;
+  close;
 end;
 
  procedure TForm4.abrir_carrinho;
