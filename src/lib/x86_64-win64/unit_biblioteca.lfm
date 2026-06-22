@@ -1,25 +1,13 @@
 object Form7: TForm7
-  Left = 1912
-  Height = 1009
-  Top = -8
-  Width = 1920
+  Left = 267
+  Height = 771
+  Top = 60
+  Width = 1272
   Caption = 'Form7'
-  ClientHeight = 1009
-  ClientWidth = 1920
+  ClientHeight = 0
+  ClientWidth = 0
   Color = 3355443
   LCLVersion = '4.6.0.0'
-  object Sair: TSpeedButton
-    Left = 16
-    Height = 32
-    Top = 24
-    Width = 77
-    Caption = '← Voltar'
-    Font.CharSet = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Pitch = fpVariable
-    Font.Quality = fqDraft
-    ParentFont = False
-  end
   object ScrollBox_biblioteca: TScrollBox
     Left = 56
     Height = 1000
@@ -82,6 +70,14 @@ object Form7: TForm7
       Width = 80
       Caption = 'Copiar'
     end
+  end
+  object SpeedButton1: TSpeedButton
+    Left = 16
+    Height = 32
+    Top = 16
+    Width = 77
+    Caption = '← Voltar'
+    OnClick = SpeedButton1Click
   end
   object Query_biblioteca: TZQuery
     Connection = Form1.CnnCatalogo

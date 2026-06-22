@@ -12,13 +12,14 @@ type
     Panel_chave: TPanel;
     Query_biblioteca: TZQuery;
     Query_chave: TZQuery;
-    Sair: TSpeedButton;
     ScrollBox_biblioteca: TScrollBox;
     btn_sair: TSpeedButton;
     btn_copiar: TSpeedButton;
+    SpeedButton1: TSpeedButton;
     procedure SairClick(Sender: TObject);
     procedure btn_sairClick(Sender: TObject);
     procedure btn_copiarClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     procedure CardClick(Sender: TObject);
   public
@@ -44,6 +45,11 @@ procedure TForm7.btn_copiarClick(Sender: TObject);
 begin
   Clipboard.AsText := Edit_chave.Text;
   ShowMessage('Chave copiada!');
+end;
+
+procedure TForm7.SpeedButton1Click(Sender: TObject);
+begin
+  close;
 end;
 
 procedure TForm7.CardClick(Sender: TObject);

@@ -54,6 +54,7 @@ uses unit_jogo,unit_biblioteca, unit_login, unit_carrinho, unit_wishlist;
 procedure TForm1.CardClick(Sender: TObject);
 var
   IdJogoClicado: Integer;
+
 begin
   IdJogoClicado := TControl(Sender).Tag;
   Form2.CarregarJogo(IdJogoClicado);

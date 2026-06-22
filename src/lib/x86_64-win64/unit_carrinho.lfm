@@ -1,7 +1,7 @@
 object Form4: TForm4
-  Left = 328
+  Left = 2240
   Height = 747
-  Top = 166
+  Top = 210
   Width = 1352
   Caption = 'Form4'
   ClientHeight = 747
@@ -14,26 +14,33 @@ object Form4: TForm4
     Left = 282
     Height = 502
     Top = 134
-    Width = 757
+    Width = 900
     ClientHeight = 482
-    ClientWidth = 753
+    ClientWidth = 896
     ParentBackground = False
     TabOrder = 0
     object DBGrid1: TDBGrid
       Left = 0
       Height = 482
       Top = 0
-      Width = 753
+      Width = 896
       Align = alClient
       Color = clWindow
       Columns = <      
         item
           Title.Caption = 'Nome do Jogo'
+          Width = 632
           FieldName = 'name'
         end      
         item
           Title.Caption = 'Preço'
+          Width = 100
           FieldName = 'price'
+        end      
+        item
+          Title.Caption = 'Disponíveis'
+          Width = 130
+          FieldName = 'chaves_disponiveis'
         end>
       DataSource = DataSource1
       Font.CharSet = ANSI_CHARSET
@@ -52,22 +59,10 @@ object Form4: TForm4
     Caption = 'Remover jogo'
     OnClick = btn_removerClick
   end
-  object SpeedButton2: TSpeedButton
-    Left = 1082
-    Height = 35
-    Top = 237
-    Width = 109
-  end
-  object SpeedButton3: TSpeedButton
-    Left = 1210
-    Height = 35
-    Top = 237
-    Width = 109
-  end
   object Panel1: TPanel
-    Left = 1082
+    Left = 1256
     Height = 72
-    Top = 147
+    Top = 152
     Width = 237
     ClientHeight = 72
     ClientWidth = 237
@@ -165,11 +160,13 @@ object Form4: TForm4
   end
   object Query_carrinho: TZQuery
     Connection = Form1.CnnCatalogo
+    Active = True
     SQL.Strings = (
-      'select g.name, g.price, c.game_id'
-      'from games g, cart c'
-      'where g.id = c.game_id'
-      'and c.user_id = :user_id'
+      'select g.id as game_id, g.name, g.price,'
+      '  (select count(*) from keys k where k.game_id = g.id and k.key_status_id = 1) as chaves_disponiveis'
+      'from cart c, games g'
+      'where c.game_id = g.id'
+      'and c.user_id = :user_id;'
     )
     Params = <    
       item
@@ -219,6 +216,15 @@ object Form4: TForm4
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = True
+    end
+    object Query_carrinhochaves_disponiveis: TZUInt64Field
+      FieldKind = fkData
+      FieldName = 'chaves_disponiveis'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
     end
   end
   object Query_valor_total: TZQuery

@@ -1,19 +1,19 @@
 object Form1: TForm1
-  Left = 2192
+  Left = 272
   Height = 844
   Top = 156
   Width = 1539
   Caption = 'Form1'
-  ClientHeight = 844
-  ClientWidth = 1539
+  ClientHeight = 0
+  ClientWidth = 0
   LCLVersion = '4.6.0.0'
   WindowState = wsFullScreen
   OnCreate = FormCreate
   object ScrollBoxCatalogo: TScrollBox
     Left = 0
-    Height = 844
+    Height = 0
     Top = 0
-    Width = 1539
+    Width = 0
     HorzScrollBar.Page = 1
     VertScrollBar.Page = 1
     Align = alClient
@@ -362,17 +362,17 @@ object Form1: TForm1
       Stretch = True
     end
     object Buscar_jogo: TEdit
-      Left = 1152
+      Left = 1160
       Height = 23
-      Top = 17
+      Top = 24
       Width = 312
       TabOrder = 0
       TextHint = 'Buscar na loja'
     end
     object btn_busca: TSpeedButton
-      Left = 1504
+      Left = 1488
       Height = 23
-      Top = 17
+      Top = 24
       Width = 23
       Caption = '🔍'
       OnClick = btn_buscaClick
@@ -410,8 +410,8 @@ object Form1: TForm1
       item
         Name = 'busca'
       end>
-    Left = 208
-    Top = 240
+    Left = 112
+    Top = 376
     ParamData = <    
       item
         Name = 'busca'

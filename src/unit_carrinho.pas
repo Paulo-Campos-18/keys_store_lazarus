@@ -22,6 +22,7 @@ type
     nome1: TLabel;
     Panel1: TPanel;
     query_att_qtd: TZQuery;
+    Query_carrinhochaves_disponiveis: TZUInt64Field;
     Query_carrinhogame_id: TZIntegerField;
     Query_remover: TZQuery;
     Query_carrinhoname: TZRawStringField;
@@ -31,8 +32,6 @@ type
     btn_remover: TSpeedButton;
     Sair: TSpeedButton;
     SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
     Query_carrinho: TZQuery;
     Query_valor_total: TZQuery;
     btn_detalhes: TSpeedButton;
@@ -121,9 +120,30 @@ begin
 end;
 
 procedure TForm4.SpeedButton1Click(Sender: TObject);
+  var
+  temEsgotado: Boolean;
 begin
+  temEsgotado := False;
+
+  Query_carrinho.First;
+  while not Query_carrinho.EOF do
+  begin
+    if Query_carrinho.FieldByName('chaves_disponiveis').AsInteger = 0 then
+    begin
+      temEsgotado := True;
+      Break;
+    end;
+    Query_carrinho.Next;
+  end;
+
+  if temEsgotado then
+  begin
+    ShowMessage('Há jogos esgotados no seu carrinho (0 chaves disponíveis). ' +
+      'Remova-os para continuar com a compra.');
+    Exit;
+  end;
+
   Form6.abrir_pagamento;
-  close;
 end;
 
  procedure TForm4.abrir_carrinho;

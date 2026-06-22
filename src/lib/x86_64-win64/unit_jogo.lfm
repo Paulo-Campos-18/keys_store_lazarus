@@ -136,14 +136,14 @@ object Form2: TForm2
       end
     end
     object release_date: TLabel
-      Left = 1318
+      Left = 1312
       Height = 16
       Top = 695
       Width = 85
       Caption = 'release_date'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -20
+      Font.Height = -21
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -151,14 +151,14 @@ object Form2: TForm2
       ParentFont = False
     end
     object studio: TLabel
-      Left = 1318
+      Left = 1312
       Height = 16
       Top = 720
       Width = 40
       Caption = 'studio'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -20
+      Font.Height = -21
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
@@ -184,7 +184,6 @@ object Form2: TForm2
         Top = 26
         Width = 808
         Alignment = taLeftJustify
-        Caption = 'Sem comentários'
         ParentBackground = False
         TabOrder = 0
       end
@@ -248,7 +247,7 @@ object Form2: TForm2
       ParentFont = False
     end
     object Label_generos: TLabel
-      Left = 1320
+      Left = 1312
       Height = 16
       Top = 824
       Width = 97
@@ -264,7 +263,7 @@ object Form2: TForm2
       WordWrap = True
     end
     object Label1: TLabel
-      Left = 1318
+      Left = 1312
       Height = 32
       Top = 781
       Width = 110
@@ -279,7 +278,7 @@ object Form2: TForm2
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 1318
+      Left = 1312
       Height = 16
       Top = 753
       Width = 133

@@ -74,7 +74,12 @@ end;
 
 procedure TForm2.btn_carrinhoClick(Sender: TObject);
 begin
-  if not usuario_logado then
+   if Label_total_disponivel.caption = '0' then
+   begin
+     ShowMessage('Não há chaves desse jogo no estoque!');
+   end
+   else
+   if not usuario_logado then
    begin
      ShowMessage('É preciso ter feito login para adicionar ao carrinho!');
    end
