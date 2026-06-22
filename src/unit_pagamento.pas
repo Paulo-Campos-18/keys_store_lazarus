@@ -179,19 +179,19 @@ begin
       Query_alocar_chave.ParamByName('user_id').AsInteger  := usuario_id;
       Query_alocar_chave.ExecSQL;
 
-      // 3) marca as chaves alocadas como vendidas
+      // marca as chaves alocadas como vendidas
       Query_vender_chaves.Close;
       Query_vender_chaves.ParamByName('order_id').AsInteger := FOrderId;
       Query_vender_chaves.ExecSQL;
 
-      // 4) registra a transação de pagamento
+      // registra a transação de pagamento
       Query_transacao.Close;
-      Query_transacao.ParamByName('order_id').AsInteger          := FOrderId;
+      Query_transacao.ParamByName('order_id').AsInteger:= FOrderId;
       Query_transacao.ParamByName('payment_method_id').AsInteger := paymentMethodId;
-      Query_transacao.ParamByName('total_price').AsCurrency      := FTotal;
+      Query_transacao.ParamByName('total_price').AsCurrency:= FTotal;
       Query_transacao.ExecSQL;
 
-      // 5) limpa o carrinho do usuário
+      //limpa o carrinho do usuário
       Query_limpar_carrinho.Close;
       Query_limpar_carrinho.ParamByName('user_id').AsInteger := usuario_id;
       Query_limpar_carrinho.ExecSQL;

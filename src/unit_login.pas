@@ -82,6 +82,7 @@ end;
 procedure TForm3.btn_registrarClick(Sender: TObject);
 begin
   Panel_login.visible := false;
+  Form3.caption := 'Registrar';
   Panel_registrar.visible := true;
 end;
 
@@ -154,6 +155,7 @@ begin
 procedure TForm3.btn_voltar_loginClick(Sender: TObject);
 begin
   Panel_registrar.visible := false;
+  Form3.caption := 'Login';
   Panel_login.visible := true;
 end;
 

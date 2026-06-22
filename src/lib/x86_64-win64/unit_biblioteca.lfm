@@ -3,11 +3,12 @@ object Form7: TForm7
   Height = 771
   Top = 60
   Width = 1272
-  Caption = 'Form7'
-  ClientHeight = 0
-  ClientWidth = 0
+  Caption = 'Biblioteca'
+  ClientHeight = 771
+  ClientWidth = 1272
   Color = 3355443
   LCLVersion = '4.6.0.0'
+  WindowState = wsMaximized
   object ScrollBox_biblioteca: TScrollBox
     Left = 56
     Height = 1000
@@ -35,9 +36,9 @@ object Form7: TForm7
     ParentFont = False
   end
   object Panel_chave: TPanel
-    Left = 1400
+    Left = 1304
     Height = 232
-    Top = 600
+    Top = 704
     Width = 608
     ClientHeight = 232
     ClientWidth = 608
@@ -56,19 +57,12 @@ object Form7: TForm7
       Text = 'Edit_chave'
     end
     object btn_sair: TSpeedButton
-      Left = 128
+      Left = 256
       Height = 22
       Top = 179
       Width = 63
       Caption = 'Sair'
       OnClick = btn_sairClick
-    end
-    object btn_copiar: TSpeedButton
-      Left = 336
-      Height = 22
-      Top = 179
-      Width = 80
-      Caption = 'Copiar'
     end
   end
   object SpeedButton1: TSpeedButton

@@ -1,9 +1,9 @@
 object Form1: TForm1
-  Left = 272
+  Left = 273
   Height = 844
-  Top = 156
+  Top = 189
   Width = 1539
-  Caption = 'Form1'
+  Caption = 'Catálogo'
   ClientHeight = 844
   ClientWidth = 1539
   LCLVersion = '4.6.0.0'

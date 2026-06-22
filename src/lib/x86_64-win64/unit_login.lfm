@@ -4,7 +4,7 @@ object Form3: TForm3
   Top = 104
   Width = 1200
   BorderStyle = bsSingle
-  Caption = 'Form3'
+  Caption = 'Login'
   ClientHeight = 750
   ClientWidth = 1200
   Constraints.MaxHeight = 750

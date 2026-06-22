@@ -1,9 +1,9 @@
 object Form6: TForm6
-  Left = 396
+  Left = 104
   Height = 837
-  Top = 146
+  Top = 124
   Width = 1550
-  Caption = 'Form6'
+  Caption = 'Pagamento'
   ClientHeight = 837
   ClientWidth = 1550
   Color = 3355443

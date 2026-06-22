@@ -1,11 +1,11 @@
 object Form5: TForm5
-  Left = 2301
+  Left = 188
   Height = 595
-  Top = 171
+  Top = 204
   Width = 1456
-  Caption = 'Form5'
-  ClientHeight = 595
-  ClientWidth = 1456
+  Caption = 'Lista de desejos'
+  ClientHeight = 0
+  ClientWidth = 0
   Color = 3355443
   LCLVersion = '4.6.0.0'
   WindowState = wsMaximized

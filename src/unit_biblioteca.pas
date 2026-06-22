@@ -14,11 +14,9 @@ type
     Query_chave: TZQuery;
     ScrollBox_biblioteca: TScrollBox;
     btn_sair: TSpeedButton;
-    btn_copiar: TSpeedButton;
     SpeedButton1: TSpeedButton;
     procedure SairClick(Sender: TObject);
     procedure btn_sairClick(Sender: TObject);
-    procedure btn_copiarClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
   private
     procedure CardClick(Sender: TObject);
@@ -41,12 +39,6 @@ begin
   Panel_chave.Visible := False;
 end;
 
-procedure TForm7.btn_copiarClick(Sender: TObject);
-begin
-  Clipboard.AsText := Edit_chave.Text;
-  ShowMessage('Chave copiada!');
-end;
-
 procedure TForm7.SpeedButton1Click(Sender: TObject);
 begin
   close;
@@ -58,8 +50,8 @@ var
 begin
   gameId := TControl(Sender).Tag;
 
-  if MessageDlg('Tem certeza que quer revelar o código de ativação?',
-    mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
+  if QuestionDlg('Confirmação', 'Tem certeza que quer revelar o código de ativação?',
+    mtConfirmation, [mrYes, 'Sim', mrNo, 'Não'], 0) <> mrYes then
     Exit;
 
   Query_chave.Close;
