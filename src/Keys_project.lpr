@@ -11,7 +11,7 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, zcomponent, unit_catalogo, unit_jogo, unit_login, unit_carrinho, 
-unit_wishlist, unit_pagamento;
+unit_wishlist, unit_pagamento, unit_biblioteca;
   { you can add units after this }
 
 {$R *.res}
@@ -29,6 +29,7 @@ begin
   Application.CreateForm(TForm4, Form4);
   Application.CreateForm(TForm5, Form5);
   Application.CreateForm(TForm6, Form6);
+  Application.CreateForm(TForm7, Form7);
   Application.Run;
 end.
 

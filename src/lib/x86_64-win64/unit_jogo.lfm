@@ -255,7 +255,7 @@ object Form2: TForm2
       Caption = 'Label_generos'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -20
+      Font.Height = -21
       Font.Name = 'System'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft

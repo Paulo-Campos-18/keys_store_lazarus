@@ -1,11 +1,11 @@
 object Form6: TForm6
-  Left = 1912
-  Height = 1009
-  Top = -8
-  Width = 1920
+  Left = 2239
+  Height = 837
+  Top = 163
+  Width = 1550
   Caption = 'Form6'
-  ClientHeight = 1009
-  ClientWidth = 1920
+  ClientHeight = 0
+  ClientWidth = 0
   Color = 3355443
   LCLVersion = '4.6.0.0'
   Scaled = False

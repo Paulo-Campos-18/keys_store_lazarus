@@ -10,6 +10,7 @@ uses
 type
   { TForm1 }
   TForm1 = class(TForm)
+    Buscar_jogo: TEdit;
     Image1: TImage;
     Image2: TImage;
     PanelTopo: TPanel;
@@ -20,10 +21,10 @@ type
     QueryCatalogoimage_byte: TZBlobField;
     QueryCatalogoname: TZRawStringField;
     QueryCatalogoprice: TZFMTBCDField;
-    QueryCatalogostudio: TZRawStringField;
     btn_carrinho: TSpeedButton;
     btn_Lista_desejos: TSpeedButton;
     btn_inventario: TSpeedButton;
+    btn_busca: TSpeedButton;
     procedure btn_carrinhoClick(Sender: TObject);
     procedure btn_inventarioClick(Sender: TObject);
     procedure btn_Lista_desejosClick(Sender: TObject);
@@ -31,8 +32,10 @@ type
     procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure CnnCatalogoAfterConnect(Sender: TObject);
+    procedure btn_buscaClick(Sender: TObject);
   private
     procedure CardClick(Sender: TObject);
+    procedure MontarCatalogo;
   public
     procedure avatar_create(Sender: TObject);
   end;
@@ -42,12 +45,11 @@ var
 
 implementation
 
-uses unit_jogo, unit_login,unit_carrinho, unit_wishlist;
+uses unit_jogo,unit_biblioteca, unit_login, unit_carrinho, unit_wishlist;
 
 {$R *.lfm}
 
 { TForm1 }
-
 
 procedure TForm1.CardClick(Sender: TObject);
 var
@@ -62,7 +64,7 @@ procedure TForm1.avatar_create(Sender: TObject);
 begin
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TForm1.MontarCatalogo;
 var
   coluna, linha: integer;
   box: TPanel;
@@ -70,14 +72,17 @@ var
   labelNome, labelPreco: TLabel;
   stream: TMemoryStream;
 begin
-  //teste
-  //usuario_logado:= true;
-  //usuario_id:= 19;
 
+  // limpa os cards anteriores
+  while ScrollBoxCatalogo.ControlCount > 0 do
+    ScrollBoxCatalogo.Controls[0].Free;
 
   linha := 0;
   coluna := 0;
+
+  QueryCatalogo.Close;
   QueryCatalogo.Open;
+
   while not QueryCatalogo.EOF do
   begin
     if coluna > 3 then
@@ -145,6 +150,16 @@ begin
   QueryCatalogo.close;
 end;
 
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  //teste
+  usuario_logado:= true;
+  usuario_id:= 19;
+
+  QueryCatalogo.ParamByName('busca').AsString := '%%';
+  MontarCatalogo;
+end;
+
 procedure TForm1.btn_carrinhoClick(Sender: TObject);
 begin
   Form4.abrir_carrinho;
@@ -152,7 +167,7 @@ end;
 
 procedure TForm1.btn_inventarioClick(Sender: TObject);
 begin
-
+  Form7.abrir_biblioteca;
 end;
 
 procedure TForm1.btn_Lista_desejosClick(Sender: TObject);
@@ -177,6 +192,16 @@ end;
 
 procedure TForm1.CnnCatalogoAfterConnect(Sender: TObject);
 begin
+end;
+
+procedure TForm1.btn_buscaClick(Sender: TObject);
+begin
+  if Buscar_jogo.Text = '' then
+    QueryCatalogo.ParamByName('busca').AsString := '%%'
+  else
+    QueryCatalogo.ParamByName('busca').AsString := '%' + Buscar_jogo.Text + '%';
+
+  MontarCatalogo;
 end;
 
 end.

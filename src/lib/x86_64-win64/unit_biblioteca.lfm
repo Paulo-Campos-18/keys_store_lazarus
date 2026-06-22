@@ -1,0 +1,137 @@
+object Form7: TForm7
+  Left = 1912
+  Height = 1009
+  Top = -8
+  Width = 1920
+  Caption = 'Form7'
+  ClientHeight = 1009
+  ClientWidth = 1920
+  Color = 3355443
+  LCLVersion = '4.6.0.0'
+  object Sair: TSpeedButton
+    Left = 16
+    Height = 32
+    Top = 24
+    Width = 77
+    Caption = '← Voltar'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentFont = False
+  end
+  object ScrollBox_biblioteca: TScrollBox
+    Left = 56
+    Height = 1000
+    Top = 64
+    Width = 1784
+    HorzScrollBar.Page = 1
+    VertScrollBar.Page = 1
+    Align = alCustom
+    ParentBackground = False
+    TabOrder = 0
+  end
+  object Label1: TLabel
+    Left = 128
+    Height = 32
+    Top = 24
+    Width = 130
+    Caption = 'Biblioteca'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -33
+    Font.Name = 'System'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Panel_chave: TPanel
+    Left = 1400
+    Height = 232
+    Top = 600
+    Width = 608
+    ClientHeight = 232
+    ClientWidth = 608
+    Color = 5329233
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 1
+    Visible = False
+    object Edit_chave: TEdit
+      Left = 72
+      Height = 23
+      Top = 88
+      Width = 432
+      ReadOnly = True
+      TabOrder = 0
+      Text = 'Edit_chave'
+    end
+    object btn_sair: TSpeedButton
+      Left = 128
+      Height = 22
+      Top = 179
+      Width = 63
+      Caption = 'Sair'
+      OnClick = btn_sairClick
+    end
+    object btn_copiar: TSpeedButton
+      Left = 336
+      Height = 22
+      Top = 179
+      Width = 80
+      Caption = 'Copiar'
+    end
+  end
+  object Query_biblioteca: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'select distinct g.id as game_id, g.name, img.image_byte'
+      'from orders o, order_keys ok, keys k, games g, images img'
+      'where o.id = ok.order_id'
+      'and ok.key_id = k.id'
+      'and k.game_id = g.id'
+      'and img.game_id = g.id'
+      'and img.is_cover = 1'
+      'and o.user_id = :user_id;'
+    )
+    Params = <    
+      item
+        Name = 'user_id'
+      end>
+    Left = 1168
+    Top = 920
+    ParamData = <    
+      item
+        Name = 'user_id'
+      end>
+  end
+  object Query_chave: TZQuery
+    Connection = Form1.CnnCatalogo
+    SQL.Strings = (
+      'select k.key_code'
+      'from orders o, order_keys ok, keys k'
+      'where o.id = ok.order_id'
+      'and ok.key_id = k.id'
+      'and k.game_id = :game_id'
+      'and o.user_id = :user_id'
+      'limit 1;'
+    )
+    Params = <    
+      item
+        Name = 'game_id'
+      end    
+      item
+        Name = 'user_id'
+      end>
+    Left = 1064
+    Top = 896
+    ParamData = <    
+      item
+        Name = 'game_id'
+      end    
+      item
+        Name = 'user_id'
+      end>
+  end
+end
