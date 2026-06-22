@@ -1,11 +1,11 @@
 object Form4: TForm4
-  Left = 2240
+  Left = 320
   Height = 747
-  Top = 210
+  Top = 160
   Width = 1352
   Caption = 'Form4'
-  ClientHeight = 747
-  ClientWidth = 1352
+  ClientHeight = 0
+  ClientWidth = 0
   Color = 3355443
   LCLVersion = '4.6.0.0'
   WindowState = wsMaximized

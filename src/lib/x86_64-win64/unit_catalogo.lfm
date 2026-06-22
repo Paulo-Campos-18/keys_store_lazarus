@@ -4,16 +4,16 @@ object Form1: TForm1
   Top = 156
   Width = 1539
   Caption = 'Form1'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 844
+  ClientWidth = 1539
   LCLVersion = '4.6.0.0'
   WindowState = wsFullScreen
   OnCreate = FormCreate
   object ScrollBoxCatalogo: TScrollBox
     Left = 0
-    Height = 0
+    Height = 844
     Top = 0
-    Width = 0
+    Width = 1539
     HorzScrollBar.Page = 1
     VertScrollBar.Page = 1
     Align = alClient
