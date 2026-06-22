@@ -154,8 +154,8 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   //teste
-  usuario_logado:= true;
-  usuario_id:= 19;
+  //usuario_logado:= true;
+  //usuario_id:= 19;
 
   QueryCatalogo.ParamByName('busca').AsString := '%%';
   MontarCatalogo;

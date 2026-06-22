@@ -1,11 +1,11 @@
 object Form6: TForm6
-  Left = 2239
+  Left = 100
   Height = 837
   Top = 163
   Width = 1550
   Caption = 'Form6'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 837
+  ClientWidth = 1550
   Color = 3355443
   LCLVersion = '4.6.0.0'
   Scaled = False
@@ -155,9 +155,9 @@ object Form6: TForm6
     OnClick = SairClick
   end
   object Panel_qr_code: TPanel
-    Left = 1112
+    Left = 744
     Height = 600
-    Top = 728
+    Top = 168
     Width = 800
     ClientHeight = 600
     ClientWidth = 800

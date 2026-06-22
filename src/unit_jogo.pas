@@ -95,7 +95,8 @@ begin
   except
      on E: Exception do
      begin
-      if (Pos('duplicate', E.message) > 0) then
+      if (Pos('duplicate', LowerCase(E.message)) > 0) or
+         (Pos('duplicar', LowerCase(E.message)) > 0) then
         ShowMessage('Você já tem esse jogo no carrinho!')
       else
         ShowMessage('Erro ao adicionar no carrinho, tente mais tarde!');

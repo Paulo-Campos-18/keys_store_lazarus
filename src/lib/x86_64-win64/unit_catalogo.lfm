@@ -27,16 +27,16 @@ object Form1: TForm1
     Left = -454
     Height = 64
     Top = 0
-    Width = 2374
+    Width = 2350
     BevelOuter = bvNone
     ClientHeight = 64
-    ClientWidth = 2374
+    ClientWidth = 2350
     Color = 3355443
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
     object Image1: TImage
-      Left = 2296
+      Left = 2288
       Height = 56
       Top = 8
       Width = 56
@@ -362,7 +362,7 @@ object Form1: TForm1
       Stretch = True
     end
     object Buscar_jogo: TEdit
-      Left = 1160
+      Left = 1176
       Height = 23
       Top = 24
       Width = 312
@@ -370,7 +370,7 @@ object Form1: TForm1
       TextHint = 'Buscar na loja'
     end
     object btn_busca: TSpeedButton
-      Left = 1488
+      Left = 1512
       Height = 23
       Top = 24
       Width = 23

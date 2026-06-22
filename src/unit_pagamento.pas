@@ -134,6 +134,7 @@ end;
 
 procedure TForm6.btn_pagoClick(Sender: TObject);
 begin
+  Form4.close;
   finalizar_compra;
 end;
 

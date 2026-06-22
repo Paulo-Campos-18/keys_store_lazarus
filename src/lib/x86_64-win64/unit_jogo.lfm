@@ -1,11 +1,11 @@
 object Form2: TForm2
-  Left = 1921
+  Left = 100
   Height = 991
   Top = 1
   Width = 1902
   Caption = 'Form2'
-  ClientHeight = 991
-  ClientWidth = 1902
+  ClientHeight = 0
+  ClientWidth = 0
   Color = 3355443
   LCLVersion = '4.6.0.0'
   WindowState = wsMaximized
@@ -188,7 +188,7 @@ object Form2: TForm2
         TabOrder = 0
       end
       object btn_mostrar_todos1: TSpeedButton
-        Left = 643
+        Left = 624
         Height = 22
         Top = 0
         Width = 170

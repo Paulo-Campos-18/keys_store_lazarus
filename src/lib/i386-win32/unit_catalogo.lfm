@@ -1,19 +1,18 @@
 object Form1: TForm1
-  Left = 272
-  Height = 844
-  Top = 156
-  Width = 1539
+  Left = 1921
+  Height = 991
+  Top = 1
+  Width = 1902
   Caption = 'Form1'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 991
+  ClientWidth = 1902
   LCLVersion = '4.6.0.0'
-  WindowState = wsFullScreen
   OnCreate = FormCreate
   object ScrollBoxCatalogo: TScrollBox
     Left = 0
-    Height = 0
-    Top = 0
-    Width = 0
+    Height = 935
+    Top = 56
+    Width = 1902
     HorzScrollBar.Page = 1
     VertScrollBar.Page = 1
     Align = alClient
@@ -24,21 +23,22 @@ object Form1: TForm1
     TabOrder = 0
   end
   object PanelTopo: TPanel
-    Left = -454
-    Height = 64
+    Left = 0
+    Height = 56
     Top = 0
-    Width = 2350
+    Width = 1902
+    Align = alTop
     BevelOuter = bvNone
-    ClientHeight = 64
-    ClientWidth = 2350
+    ClientHeight = 56
+    ClientWidth = 1902
     Color = 3355443
     ParentBackground = False
     ParentColor = False
     TabOrder = 1
     object Image1: TImage
-      Left = 2288
+      Left = 1828
       Height = 56
-      Top = 8
+      Top = 0
       Width = 56
       Anchors = [akTop, akRight]
       Picture.Data = {
@@ -102,33 +102,31 @@ object Form1: TForm1
       OnClick = Image1Click
     end
     object btn_carrinho: TSpeedButton
-      Left = 2128
+      Left = 1664
       Height = 33
-      Top = 17
+      Top = 23
       Width = 135
       Caption = 'Carrinho'
       OnClick = btn_carrinhoClick
     end
     object btn_Lista_desejos: TSpeedButton
-      Left = 648
+      Left = 1488
       Height = 33
-      Top = 17
+      Top = 22
       Width = 135
       Caption = 'Lista de desejos'
-      OnClick = btn_Lista_desejosClick
     end
     object btn_inventario: TSpeedButton
-      Left = 480
+      Left = 1312
       Height = 33
-      Top = 16
+      Top = 22
       Width = 135
-      Caption = 'Biblioteca'
-      OnClick = btn_inventarioClick
+      Caption = 'Inventário'
     end
     object Image2: TImage
-      Left = 2128
+      Left = 1664
       Height = 33
-      Top = 16
+      Top = 22
       Width = 35
       Picture.Data = {
         1754506F727461626C654E6574776F726B47726170686963351C000089504E47
@@ -361,29 +359,12 @@ object Form1: TForm1
       }
       Stretch = True
     end
-    object Buscar_jogo: TEdit
-      Left = 1176
-      Height = 23
-      Top = 24
-      Width = 312
-      TabOrder = 0
-      TextHint = 'Buscar na loja'
-    end
-    object btn_busca: TSpeedButton
-      Left = 1512
-      Height = 23
-      Top = 24
-      Width = 23
-      Caption = '🔍'
-      OnClick = btn_buscaClick
-    end
   end
   object CnnCatalogo: TZConnection
     ControlsCodePage = cCP_UTF8
     Properties.Strings = (
       'RawStringEncoding=DB_CP'
     )
-    Connected = True
     AfterConnect = CnnCatalogoAfterConnect
     DisableSavepoints = False
     HostName = 'localhost'
@@ -392,30 +373,22 @@ object Form1: TForm1
     User = 'postgres'
     Password = 'abc'
     Protocol = 'postgresql'
-    LibraryLocation = 'C:\Program Files\PostgreSQL\17\bin\libpq.dll'
-    Left = 96
-    Top = 240
+    LibraryLocation = 'C:/Program Files/PostgreSQL/17/bin/libpq.dll'
+    Left = 192
+    Top = 16
   end
   object QueryCatalogo: TZQuery
     Connection = CnnCatalogo
     SQL.Strings = (
-      'select g.id, g.name, g.price, img.image_byte'
-      'from games g, images img'
-      'where img.game_id = g.id'
-      'and img.is_cover = 1'
-      'and g.deleted = 0'
-      'and g.name ilike :busca;'
+      'select g.id,g.name,g.studio,g.price, img.image_byte'
+      'from games g,images img'
+      'where img.game_id = g.id and'
+      'img.is_cover = 1 and'
+      'g.deleted = 0;'
     )
-    Params = <    
-      item
-        Name = 'busca'
-      end>
-    Left = 112
-    Top = 376
-    ParamData = <    
-      item
-        Name = 'busca'
-      end>
+    Params = <>
+    Left = 240
+    Top = 16
     object QueryCatalogoid: TZIntegerField
       FieldKind = fkData
       FieldName = 'id'
@@ -435,10 +408,20 @@ object Form1: TForm1
       Required = True
       Size = 100
     end
+    object QueryCatalogostudio: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'studio'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
     object QueryCatalogoprice: TZFMTBCDField
       FieldKind = fkData
       FieldName = 'price'
-      Index = 2
+      Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -452,7 +435,7 @@ object Form1: TForm1
     object QueryCatalogoimage_byte: TZBlobField
       FieldKind = fkData
       FieldName = 'image_byte'
-      Index = 3
+      Index = 4
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False

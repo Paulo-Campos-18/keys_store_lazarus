@@ -32229,21 +32229,21 @@ object Form3: TForm3
       Height = 23
       Top = 288
       Width = 222
-      TabOrder = 2
+      TabOrder = 3
     end
     object campo_email_regis: TEdit
       Left = 134
       Height = 23
       Top = 326
       Width = 222
-      TabOrder = 3
+      TabOrder = 4
     end
     object campo_senha_regis: TEdit
       Left = 134
       Height = 23
       Top = 365
       Width = 222
-      TabOrder = 4
+      TabOrder = 5
     end
     object Label4: TLabel
       Left = 66
@@ -32316,7 +32316,7 @@ object Form3: TForm3
       Height = 23
       Top = 250
       Width = 222
-      TabOrder = 5
+      TabOrder = 2
     end
     object btn_voltar_login: TSpeedButton
       Left = 102
